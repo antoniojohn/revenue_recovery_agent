@@ -1,0 +1,527 @@
+[
+  {
+    "payment_id": "pay_synthetic_0001",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_5506"
+  },
+  {
+    "payment_id": "pay_synthetic_0002",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_2679"
+  },
+  {
+    "payment_id": "pay_synthetic_0003",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_2424"
+  },
+  {
+    "payment_id": "pay_synthetic_0004",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_1488"
+  },
+  {
+    "payment_id": "pay_synthetic_0005",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_9279"
+  },
+  {
+    "payment_id": "pay_synthetic_0006",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_4257"
+  },
+  {
+    "payment_id": "pay_synthetic_0007",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_9928"
+  },
+  {
+    "payment_id": "pay_synthetic_0008",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_5557"
+  },
+  {
+    "payment_id": "pay_synthetic_0009",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_3615"
+  },
+  {
+    "payment_id": "pay_synthetic_0010",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_5552"
+  },
+  {
+    "payment_id": "pay_synthetic_0011",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_6514"
+  },
+  {
+    "payment_id": "pay_synthetic_0012",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_2584"
+  },
+  {
+    "payment_id": "pay_synthetic_0013",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_5333"
+  },
+  {
+    "payment_id": "pay_synthetic_0014",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_8527"
+  },
+  {
+    "payment_id": "pay_synthetic_0015",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_2291"
+  },
+  {
+    "payment_id": "pay_synthetic_0016",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_6925"
+  },
+  {
+    "payment_id": "pay_synthetic_0017",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_2139"
+  },
+  {
+    "payment_id": "pay_synthetic_0018",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_5741"
+  },
+  {
+    "payment_id": "pay_synthetic_0019",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_4814"
+  },
+  {
+    "payment_id": "pay_synthetic_0020",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_5554"
+  },
+  {
+    "payment_id": "pay_synthetic_0021",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_6977"
+  },
+  {
+    "payment_id": "pay_synthetic_0022",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_4432"
+  },
+  {
+    "payment_id": "pay_synthetic_0023",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_2169"
+  },
+  {
+    "payment_id": "pay_synthetic_0024",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_9751"
+  },
+  {
+    "payment_id": "pay_synthetic_0025",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_8573"
+  },
+  {
+    "payment_id": "pay_synthetic_0026",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_4598"
+  },
+  {
+    "payment_id": "pay_synthetic_0027",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_1916"
+  },
+  {
+    "payment_id": "pay_synthetic_0028",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_6168"
+  },
+  {
+    "payment_id": "pay_synthetic_0029",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_4456"
+  },
+  {
+    "payment_id": "pay_synthetic_0030",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_6155"
+  },
+  {
+    "payment_id": "pay_synthetic_0031",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_7482"
+  },
+  {
+    "payment_id": "pay_synthetic_0032",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_8517"
+  },
+  {
+    "payment_id": "pay_synthetic_0033",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_5040"
+  },
+  {
+    "payment_id": "pay_synthetic_0034",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_5304"
+  },
+  {
+    "payment_id": "pay_synthetic_0035",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_7543"
+  },
+  {
+    "payment_id": "pay_synthetic_0036",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_9348"
+  },
+  {
+    "payment_id": "pay_synthetic_0037",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_1771"
+  },
+  {
+    "payment_id": "pay_synthetic_0038",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_3621"
+  },
+  {
+    "payment_id": "pay_synthetic_0039",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_2040"
+  },
+  {
+    "payment_id": "pay_synthetic_0040",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_8668"
+  },
+  {
+    "payment_id": "pay_synthetic_0041",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_1188"
+  },
+  {
+    "payment_id": "pay_synthetic_0042",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_9797"
+  },
+  {
+    "payment_id": "pay_synthetic_0043",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_6573"
+  },
+  {
+    "payment_id": "pay_synthetic_0044",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_3591"
+  },
+  {
+    "payment_id": "pay_synthetic_0045",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_5315"
+  },
+  {
+    "payment_id": "pay_synthetic_0046",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_3927"
+  },
+  {
+    "payment_id": "pay_synthetic_0047",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_5889"
+  },
+  {
+    "payment_id": "pay_synthetic_0048",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_4258"
+  },
+  {
+    "payment_id": "pay_synthetic_0049",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_3646"
+  },
+  {
+    "payment_id": "pay_synthetic_0050",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_9689"
+  },
+  {
+    "payment_id": "pay_synthetic_0051",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_6310"
+  },
+  {
+    "payment_id": "pay_synthetic_0052",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_6947"
+  },
+  {
+    "payment_id": "pay_synthetic_0053",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_6038"
+  },
+  {
+    "payment_id": "pay_synthetic_0054",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_2290"
+  },
+  {
+    "payment_id": "pay_synthetic_0055",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_2133"
+  },
+  {
+    "payment_id": "pay_synthetic_0056",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_3060"
+  },
+  {
+    "payment_id": "pay_synthetic_0057",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_3705"
+  },
+  {
+    "payment_id": "pay_synthetic_0058",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_7932"
+  },
+  {
+    "payment_id": "pay_synthetic_0059",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_4295"
+  },
+  {
+    "payment_id": "pay_synthetic_0060",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_7118"
+  },
+  {
+    "payment_id": "pay_synthetic_0061",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_8397"
+  },
+  {
+    "payment_id": "pay_synthetic_0062",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_2049"
+  },
+  {
+    "payment_id": "pay_synthetic_0063",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_4770"
+  },
+  {
+    "payment_id": "pay_synthetic_0064",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_2163"
+  },
+  {
+    "payment_id": "pay_synthetic_0065",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_4750"
+  },
+  {
+    "payment_id": "pay_synthetic_0066",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_6413"
+  },
+  {
+    "payment_id": "pay_synthetic_0067",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_5562"
+  },
+  {
+    "payment_id": "pay_synthetic_0068",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_9834"
+  },
+  {
+    "payment_id": "pay_synthetic_0069",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_8744"
+  },
+  {
+    "payment_id": "pay_synthetic_0070",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_7669"
+  },
+  {
+    "payment_id": "pay_synthetic_0071",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_8062"
+  },
+  {
+    "payment_id": "pay_synthetic_0072",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_8651"
+  },
+  {
+    "payment_id": "pay_synthetic_0073",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_2612"
+  },
+  {
+    "payment_id": "pay_synthetic_0074",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_6559"
+  },
+  {
+    "payment_id": "pay_synthetic_0075",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_5073"
+  }
+]
