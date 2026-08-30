@@ -15,11 +15,16 @@ ERROR_CODES = [
     "expired_card",
     "bank_timeout",
     "invalid_cvv",
+    # Ambiguous / free-text reasons not in the rule map - these should
+    # get routed through the LLM fallback in diagnose.py.
+    "issuer_bank_rejected_transaction_temporarily",
+    "customer_bank_server_not_responding",
+    "card_limit_exceeded_for_the_day",
 ]
 
 # Weighted so insufficient_funds / card_declined are most common,
-# matching real-world failure distributions.
-WEIGHTS = [0.35, 0.30, 0.15, 0.12, 0.08]
+# matching real-world failure distributions. Ambiguous reasons are rarer.
+WEIGHTS = [0.30, 0.26, 0.13, 0.10, 0.07, 0.05, 0.05, 0.04]
 
 random.seed(42)  # reproducible batch for demo purposes
 

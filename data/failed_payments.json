@@ -3,7 +3,7 @@
     "payment_id": "pay_synthetic_0001",
     "amount": 199,
     "currency": "INR",
-    "error_code": "card_declined",
+    "error_code": "expired_card",
     "customer_id": "cust_5506"
   },
   {
@@ -24,7 +24,7 @@
     "payment_id": "pay_synthetic_0004",
     "amount": 199,
     "currency": "INR",
-    "error_code": "card_declined",
+    "error_code": "expired_card",
     "customer_id": "cust_1488"
   },
   {
@@ -38,14 +38,14 @@
     "payment_id": "pay_synthetic_0006",
     "amount": 2499,
     "currency": "INR",
-    "error_code": "card_declined",
+    "error_code": "expired_card",
     "customer_id": "cust_4257"
   },
   {
     "payment_id": "pay_synthetic_0007",
     "amount": 4999,
     "currency": "INR",
-    "error_code": "expired_card",
+    "error_code": "bank_timeout",
     "customer_id": "cust_9928"
   },
   {
@@ -59,14 +59,14 @@
     "payment_id": "pay_synthetic_0009",
     "amount": 199,
     "currency": "INR",
-    "error_code": "bank_timeout",
+    "error_code": "invalid_cvv",
     "customer_id": "cust_3615"
   },
   {
     "payment_id": "pay_synthetic_0010",
     "amount": 999,
     "currency": "INR",
-    "error_code": "expired_card",
+    "error_code": "bank_timeout",
     "customer_id": "cust_5552"
   },
   {
@@ -94,7 +94,7 @@
     "payment_id": "pay_synthetic_0014",
     "amount": 4999,
     "currency": "INR",
-    "error_code": "bank_timeout",
+    "error_code": "invalid_cvv",
     "customer_id": "cust_8527"
   },
   {
@@ -115,7 +115,7 @@
     "payment_id": "pay_synthetic_0017",
     "amount": 4999,
     "currency": "INR",
-    "error_code": "card_declined",
+    "error_code": "expired_card",
     "customer_id": "cust_2139"
   },
   {
@@ -129,14 +129,14 @@
     "payment_id": "pay_synthetic_0019",
     "amount": 9999,
     "currency": "INR",
-    "error_code": "invalid_cvv",
+    "error_code": "card_limit_exceeded_for_the_day",
     "customer_id": "cust_4814"
   },
   {
     "payment_id": "pay_synthetic_0020",
     "amount": 1499,
     "currency": "INR",
-    "error_code": "bank_timeout",
+    "error_code": "issuer_bank_rejected_transaction_temporarily",
     "customer_id": "cust_5554"
   },
   {
@@ -164,14 +164,14 @@
     "payment_id": "pay_synthetic_0024",
     "amount": 499,
     "currency": "INR",
-    "error_code": "card_declined",
+    "error_code": "expired_card",
     "customer_id": "cust_9751"
   },
   {
     "payment_id": "pay_synthetic_0025",
     "amount": 499,
     "currency": "INR",
-    "error_code": "expired_card",
+    "error_code": "bank_timeout",
     "customer_id": "cust_8573"
   },
   {
@@ -206,7 +206,7 @@
     "payment_id": "pay_synthetic_0030",
     "amount": 2499,
     "currency": "INR",
-    "error_code": "bank_timeout",
+    "error_code": "customer_bank_server_not_responding",
     "customer_id": "cust_6155"
   },
   {
@@ -220,7 +220,7 @@
     "payment_id": "pay_synthetic_0032",
     "amount": 4999,
     "currency": "INR",
-    "error_code": "bank_timeout",
+    "error_code": "issuer_bank_rejected_transaction_temporarily",
     "customer_id": "cust_8517"
   },
   {
@@ -234,14 +234,14 @@
     "payment_id": "pay_synthetic_0034",
     "amount": 2499,
     "currency": "INR",
-    "error_code": "expired_card",
+    "error_code": "bank_timeout",
     "customer_id": "cust_5304"
   },
   {
     "payment_id": "pay_synthetic_0035",
     "amount": 1499,
     "currency": "INR",
-    "error_code": "expired_card",
+    "error_code": "bank_timeout",
     "customer_id": "cust_7543"
   },
   {
@@ -262,14 +262,14 @@
     "payment_id": "pay_synthetic_0038",
     "amount": 499,
     "currency": "INR",
-    "error_code": "bank_timeout",
+    "error_code": "issuer_bank_rejected_transaction_temporarily",
     "customer_id": "cust_3621"
   },
   {
     "payment_id": "pay_synthetic_0039",
     "amount": 1499,
     "currency": "INR",
-    "error_code": "expired_card",
+    "error_code": "invalid_cvv",
     "customer_id": "cust_2040"
   },
   {
@@ -297,7 +297,7 @@
     "payment_id": "pay_synthetic_0043",
     "amount": 9999,
     "currency": "INR",
-    "error_code": "expired_card",
+    "error_code": "bank_timeout",
     "customer_id": "cust_6573"
   },
   {
@@ -318,7 +318,7 @@
     "payment_id": "pay_synthetic_0046",
     "amount": 9999,
     "currency": "INR",
-    "error_code": "invalid_cvv",
+    "error_code": "card_limit_exceeded_for_the_day",
     "customer_id": "cust_3927"
   },
   {
@@ -332,7 +332,7 @@
     "payment_id": "pay_synthetic_0048",
     "amount": 2499,
     "currency": "INR",
-    "error_code": "bank_timeout",
+    "error_code": "invalid_cvv",
     "customer_id": "cust_4258"
   },
   {
@@ -353,7 +353,7 @@
     "payment_id": "pay_synthetic_0051",
     "amount": 2499,
     "currency": "INR",
-    "error_code": "bank_timeout",
+    "error_code": "customer_bank_server_not_responding",
     "customer_id": "cust_6310"
   },
   {
@@ -367,7 +367,7 @@
     "payment_id": "pay_synthetic_0053",
     "amount": 9999,
     "currency": "INR",
-    "error_code": "bank_timeout",
+    "error_code": "issuer_bank_rejected_transaction_temporarily",
     "customer_id": "cust_6038"
   },
   {
@@ -388,7 +388,7 @@
     "payment_id": "pay_synthetic_0056",
     "amount": 2499,
     "currency": "INR",
-    "error_code": "invalid_cvv",
+    "error_code": "card_limit_exceeded_for_the_day",
     "customer_id": "cust_3060"
   },
   {
@@ -409,14 +409,14 @@
     "payment_id": "pay_synthetic_0059",
     "amount": 2499,
     "currency": "INR",
-    "error_code": "invalid_cvv",
+    "error_code": "card_limit_exceeded_for_the_day",
     "customer_id": "cust_4295"
   },
   {
     "payment_id": "pay_synthetic_0060",
     "amount": 1499,
     "currency": "INR",
-    "error_code": "expired_card",
+    "error_code": "bank_timeout",
     "customer_id": "cust_7118"
   },
   {
@@ -437,21 +437,21 @@
     "payment_id": "pay_synthetic_0063",
     "amount": 2499,
     "currency": "INR",
-    "error_code": "insufficient_funds",
+    "error_code": "card_declined",
     "customer_id": "cust_4770"
   },
   {
     "payment_id": "pay_synthetic_0064",
     "amount": 199,
     "currency": "INR",
-    "error_code": "card_declined",
+    "error_code": "expired_card",
     "customer_id": "cust_2163"
   },
   {
     "payment_id": "pay_synthetic_0065",
     "amount": 199,
     "currency": "INR",
-    "error_code": "expired_card",
+    "error_code": "bank_timeout",
     "customer_id": "cust_4750"
   },
   {
@@ -507,7 +507,7 @@
     "payment_id": "pay_synthetic_0073",
     "amount": 199,
     "currency": "INR",
-    "error_code": "bank_timeout",
+    "error_code": "issuer_bank_rejected_transaction_temporarily",
     "customer_id": "cust_2612"
   },
   {
@@ -521,7 +521,7 @@
     "payment_id": "pay_synthetic_0075",
     "amount": 199,
     "currency": "INR",
-    "error_code": "bank_timeout",
+    "error_code": "invalid_cvv",
     "customer_id": "cust_5073"
   }
 ]
