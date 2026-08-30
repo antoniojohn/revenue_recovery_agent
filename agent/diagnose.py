@@ -39,8 +39,24 @@ def _get_groq_client():
 
 
 def load_batch(path: str) -> list[dict]:
+    """Load the batch of failed payments to process.
+
+    Tries real failed payments from the connected Razorpay test account
+    first (proof of real platform integration), then adds synthetic
+    records from the given path to reach a batch large enough to report
+    meaningful metrics on. Works fine with zero real payments too - the
+    pipeline never depends on Razorpay data being present.
+    """
+    from agent import razorpay_client
+
+    real_records = razorpay_client.fetch_failed_payments()
+    if real_records:
+        print(f"[diagnose] Loaded {len(real_records)} real failed payment(s) from Razorpay test account.")
+
     with open(path) as f:
-        return json.load(f)
+        synthetic_records = json.load(f)
+
+    return real_records + synthetic_records
 
 
 def classify(record: dict) -> str:
