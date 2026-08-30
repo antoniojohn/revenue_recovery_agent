@@ -1,0 +1,85 @@
+<svg viewBox="0 0 900 960" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="960" fill="#ffffff"/>
+
+  <text x="450" y="45" text-anchor="middle" font-size="24" font-weight="700" fill="#0f172a">Revenue Recovery Agent — Architecture</text>
+  <text x="450" y="70" text-anchor="middle" font-size="13" fill="#64748b">Razorpay AI Buildathon 2026 — AI Revenue Recovery track</text>
+
+  <!-- Stage 1: Data sources -->
+  <rect x="80" y="100" width="330" height="70" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="245" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#1e40af">Razorpay Test Mode</text>
+  <text x="245" y="148" text-anchor="middle" font-size="12" fill="#3b5b8f">Real failed payments (razorpay_client.py)</text>
+
+  <rect x="490" y="100" width="330" height="70" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="655" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#1e40af">Synthetic Batch</text>
+  <text x="655" y="148" text-anchor="middle" font-size="12" fill="#3b5b8f">generate_data.py — data/failed_payments.json</text>
+
+  <line x1="245" y1="170" x2="450" y2="215" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="655" y1="170" x2="450" y2="215" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Stage 2: Diagnose -->
+  <rect x="230" y="215" width="440" height="60" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="450" y="240" text-anchor="middle" font-size="15" font-weight="700" fill="#92400e">Payment Events / Failure Records</text>
+  <text x="450" y="258" text-anchor="middle" font-size="12" fill="#92400e">error_code, amount, payment_id</text>
+
+  <line x1="450" y1="275" x2="450" y2="315" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="230" y="315" width="440" height="60" rx="10" fill="#f1f5f9" stroke="#334155" stroke-width="1.5"/>
+  <text x="450" y="340" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">diagnose.py</text>
+  <text x="450" y="358" text-anchor="middle" font-size="12" fill="#475569">Diagnosis Layer</text>
+
+  <line x1="330" y1="375" x2="330" y2="410" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="570" y1="375" x2="570" y2="410" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Stage 3: Rule Engine + LLM Fallback -->
+  <rect x="150" y="410" width="330" height="65" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="315" y="437" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">Rule Engine</text>
+  <text x="315" y="456" text-anchor="middle" font-size="12" fill="#166534">Fast-path match on known error codes</text>
+
+  <rect x="500" y="410" width="330" height="65" rx="10" fill="#fce7f3" stroke="#db2777" stroke-width="1.5"/>
+  <text x="665" y="437" text-anchor="middle" font-size="15" font-weight="700" fill="#831843">LLM Fallback (Groq)</text>
+  <text x="665" y="456" text-anchor="middle" font-size="12" fill="#9d174d">Ambiguous / free-text reasons</text>
+
+  <line x1="315" y1="475" x2="450" y2="510" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="665" y1="475" x2="450" y2="510" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Cause bucket -->
+  <rect x="280" y="510" width="340" height="50" rx="10" fill="#f1f5f9" stroke="#334155" stroke-width="1.5"/>
+  <text x="450" y="540" text-anchor="middle" font-size="14" font-weight="600" fill="#0f172a">Cause Bucket (e.g. INSUFFICIENT_FUNDS, EXPIRED_CARD)</text>
+
+  <line x1="450" y1="560" x2="450" y2="600" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Stage 4: decide.py -->
+  <rect x="230" y="600" width="440" height="60" rx="10" fill="#f1f5f9" stroke="#334155" stroke-width="1.5"/>
+  <text x="450" y="625" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">decide.py</text>
+  <text x="450" y="643" text-anchor="middle" font-size="12" fill="#475569">Policy Gate — bounded, capped, explainable action</text>
+
+  <line x1="450" y1="660" x2="450" y2="695" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Stage 5: execute.py -->
+  <rect x="230" y="695" width="440" height="60" rx="10" fill="#f1f5f9" stroke="#334155" stroke-width="1.5"/>
+  <text x="450" y="720" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">execute.py</text>
+  <text x="450" y="738" text-anchor="middle" font-size="12" fill="#475569">Recovery Action — retry / notify / escalate</text>
+
+  <line x1="450" y1="755" x2="450" y2="790" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Stage 6: Audit + Report -->
+  <rect x="120" y="790" width="330" height="65" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="285" y="817" text-anchor="middle" font-size="15" font-weight="700" fill="#4c1d95">Audit Trail</text>
+  <text x="285" y="836" text-anchor="middle" font-size="12" fill="#5b21b6">logs/audit_log.json — every decision logged</text>
+
+  <rect x="460" y="790" width="330" height="65" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="625" y="817" text-anchor="middle" font-size="15" font-weight="700" fill="#4c1d95">report.py</text>
+  <text x="625" y="836" text-anchor="middle" font-size="12" fill="#5b21b6">₹ recovered, recovery %, honest exception list</text>
+
+  <line x1="450" y1="775" x2="285" y2="790" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="450" y1="775" x2="625" y2="790" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Footer -->
+  <text x="450" y="920" text-anchor="middle" font-size="12" fill="#94a3b8">Every action is bounded (capped retries), explainable (reasoning logged), and auditable end-to-end.</text>
+</svg>
