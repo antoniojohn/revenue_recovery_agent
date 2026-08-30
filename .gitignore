@@ -1,0 +1,17 @@
+# Virtual environment
+venv311/
+__pycache__/
+*.pyc
+
+# Env vars / secrets
+.env
+*.key
+
+# Logs (keep folder, ignore generated logs)
+logs/*.log
+logs/*.json
+!logs/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db
