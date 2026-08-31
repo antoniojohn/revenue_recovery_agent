@@ -523,5 +523,19 @@
     "currency": "INR",
     "error_code": "invalid_cvv",
     "customer_id": "cust_5073"
+  },
+  {
+    "payment_id": "pay_synthetic_0076",
+    "amount": 99,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_1001"
+  },
+  {
+    "payment_id": "pay_synthetic_0077",
+    "amount": 120,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_1002"
   }
 ]

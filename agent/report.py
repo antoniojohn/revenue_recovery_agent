@@ -25,21 +25,40 @@ def summarize(results: list[dict]) -> dict:
     for r in exception_cases:
         exceptions_by_cause[r["cause"]] = exceptions_by_cause.get(r["cause"], 0) + 1
 
+    # Full breakdown across every case (not just exceptions) - this is
+    # what a "failure categories" chart needs, since exceptions_by_cause
+    # alone only shows the unresolved slice.
+    cases_by_cause: dict[str, int] = {}
+    for r in results:
+        cases_by_cause[r["cause"]] = cases_by_cause.get(r["cause"], 0) + 1
+
+    decisions_by_source = {"rule": 0, "llm": 0}
+    for r in results:
+        source = r.get("source", "rule")
+        decisions_by_source[source] = decisions_by_source.get(source, 0) + 1
+
+    escalated_cases = [r for r in exception_cases if r["action_type"] == "ESCALATE"]
+
     summary = {
         "total_cases": total_cases,
         "recovered_cases": len(recovered_cases),
         "exception_cases": len(exception_cases),
+        "escalated_cases": len(escalated_cases),
         "recovery_rate_percent": round(recovery_rate, 2),
         "total_amount": total_amount,
         "recovered_amount": recovered_amount,
         "unrecovered_amount": total_amount - recovered_amount,
+        "cases_by_cause": cases_by_cause,
         "exceptions_by_cause": exceptions_by_cause,
+        "decisions_by_source": decisions_by_source,
         "exception_list": [
             {
                 "payment_id": r["payment_id"],
                 "amount": r["amount"],
                 "cause": r["cause"],
+                "source": r.get("source", "rule"),
                 "action_type": r["action_type"],
+                "policy_approved": r.get("policy_approved", True),
                 "reasoning": r["reasoning"],
             }
             for r in exception_cases

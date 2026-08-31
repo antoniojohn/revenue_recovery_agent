@@ -18,10 +18,26 @@ appropriate recovery action per cause.
    free-text failure reasons.
 3. **Decides** a bounded recovery action per cause (capped retries, no
    infinite loops — every action is explainable).
-4. **Executes** the action and logs a full audit trail (decision, reasoning,
-   timestamp, outcome) to `logs/audit_log.json`.
+4. **Executes** the action via a bounded retry loop (stops on success or
+   at the cap, whichever comes first) and logs a full audit trail
+   (decision, reasoning, timestamp, outcome) to `logs/audit_log.json`.
 5. **Reports** recovery rate, ₹ amount recovered, and an honest list of
    unresolved exceptions — nothing cherry-picked.
+
+## What's real vs. simulated
+
+Being explicit about this, since it matters for judging:
+
+- **Real**: Razorpay test-mode payment ingestion (`razorpay_client.py`),
+  Groq LLM classification for ambiguous failure reasons, the policy gate
+  logic, and — for any payment that came from the real Razorpay test
+  account specifically — a genuine follow-up API call to verify that
+  payment's live status (`razorpay_client.check_payment_status`). Occasionally the LLM fallback returns `UNKNOWN` when no category fits — this is handled explicitly, not treated as an error. Re-running the pipeline is safe: `diagnose.py` checks `logs/audit_log.json` and skips any payment_id (real or synthetic) already processed in a prior run, so the audit trail and reported metrics never double-count a case.
+- **Simulated**: retry/notify/escalate *outcomes* (`SIMULATED_SUCCESS_RATE`
+  in `execute.py`) are drawn from a fixed probability per action type,
+  not a live payment-retry API call — Razorpay's test mode has no
+  endpoint to actually re-attempt a failed payment. A production
+  integration would replace this with a real retry/notification call.
 
 ## Architecture
 
@@ -31,19 +47,35 @@ appropriate recovery action per cause.
 <summary>Text version</summary>
 
 ```
-data/failed_payments.json
-        │
-        ▼
-agent/diagnose.py   ──►  cause bucket (rule-based → Groq LLM fallback)
-        │
-        ▼
-agent/decide.py     ──►  bounded action (retry / notify / escalate)
-        │
-        ▼
-agent/execute.py    ──►  runs action, writes audit log
-        │
-        ▼
-agent/report.py     ──►  recovery %, ₹ recovered, exception list
+Razorpay test account          data/failed_payments.json
+(real failed payments)         (synthetic batch)
+        │                              │
+        └──────────────┬───────────────┘
+                        ▼
+        agent/diagnose.py  ──► dedup against logs/audit_log.json
+                                (skips already-processed real AND
+                                synthetic payment_ids from prior runs)
+                        │
+                        ▼
+        agent/diagnose.py  ──► cause bucket (rule-based → Groq LLM fallback)
+                        │
+                        ▼
+        agent/decide.py    ──► bounded action (retry / notify / escalate)
+                                + policy gate (rejects sub-₹150 retries)
+                        │
+                        ▼
+        agent/execute.py   ──► bounded retry loop: up to max_attempts
+                                tries, stops the instant one succeeds
+                                (real records also get a genuine
+                                Razorpay API call to verify live status)
+                        │
+                        ▼
+        agent/execute.py   ──► writes full audit trail to
+                                logs/audit_log.json
+                        │
+                        ▼
+        agent/report.py    ──► recovery %, ₹ recovered, exception list
+                                → logs/summary_report.json
 ```
 </details>
 
@@ -86,6 +118,17 @@ Exceptions by cause:
 
 Full per-record audit trail is written to `logs/audit_log.json`, and the
 same summary is written to `logs/summary_report.json`.
+
+## Testing
+
+```powershell
+pip install pytest
+pytest tests/ -v
+```
+
+Covers the policy gate's core behavior: rejecting low-amount retries,
+approving normal ones, the exact threshold boundary, and that non-retry
+causes and unknown causes are unaffected.
 
 ## Status
 

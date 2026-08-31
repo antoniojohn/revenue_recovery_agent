@@ -1,0 +1,2402 @@
+[
+  {
+    "payment_id": "pay_eval_00001",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_7468",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00002",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_9779",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00003",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_1950",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00004",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "issuer_bank_rejected_transaction_temporarily",
+    "customer_id": "cust_1614",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00005",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_2144",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00006",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_7955",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00007",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_3028",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00008",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "customer_bank_server_not_responding",
+    "customer_id": "cust_2013",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00009",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_1812",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00010",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "card_limit_exceeded_for_the_day",
+    "customer_id": "cust_3181",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00011",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_9858",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00012",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_3961",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00013",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_4078",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00014",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_2028",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00015",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_4374",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00016",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_8005",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00017",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_8424",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00018",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_3945",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00019",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_2341",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00020",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_9111",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00021",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "issuer_bank_rejected_transaction_temporarily",
+    "customer_id": "cust_8353",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00022",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_2934",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00023",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_6604",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00024",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_7909",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00025",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_2271",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00026",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_6140",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00027",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_9137",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00028",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_2126",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00029",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_8767",
+    "ground_truth": "INVALID_CVV"
+  },
+  {
+    "payment_id": "pay_eval_00030",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_1994",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00031",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_8301",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00032",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_6685",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00033",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_6823",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00034",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_9088",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00035",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_5709",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00036",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_7519",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00037",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_9134",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00038",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_7580",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00039",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_8053",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00040",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "issuer_bank_rejected_transaction_temporarily",
+    "customer_id": "cust_7804",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00041",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "card_limit_exceeded_for_the_day",
+    "customer_id": "cust_7233",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00042",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "customer_bank_server_not_responding",
+    "customer_id": "cust_2359",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00043",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_4822",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00044",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_3987",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00045",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_3386",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00046",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_6220",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00047",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "customer_bank_server_not_responding",
+    "customer_id": "cust_9445",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00048",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "customer_bank_server_not_responding",
+    "customer_id": "cust_1884",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00049",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_7428",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00050",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_2696",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00051",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_2019",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00052",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_8219",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00053",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_1861",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00054",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_3478",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00055",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_1417",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00056",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_7164",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00057",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_6691",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00058",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_3012",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00059",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_8634",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00060",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_2407",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00061",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_6613",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00062",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_3645",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00063",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_9654",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00064",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_9899",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00065",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "customer_bank_server_not_responding",
+    "customer_id": "cust_9652",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00066",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_2491",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00067",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_9493",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00068",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_6827",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00069",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_9873",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00070",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_4654",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00071",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_4197",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00072",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_7564",
+    "ground_truth": "INVALID_CVV"
+  },
+  {
+    "payment_id": "pay_eval_00073",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_4275",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00074",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_1474",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00075",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "card_limit_exceeded_for_the_day",
+    "customer_id": "cust_5577",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00076",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_6640",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00077",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_6726",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00078",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "customer_bank_server_not_responding",
+    "customer_id": "cust_2319",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00079",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_8701",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00080",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_8907",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00081",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_1031",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00082",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_6636",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00083",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_2964",
+    "ground_truth": "INVALID_CVV"
+  },
+  {
+    "payment_id": "pay_eval_00084",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "issuer_bank_rejected_transaction_temporarily",
+    "customer_id": "cust_4265",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00085",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_8109",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00086",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_2421",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00087",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_7485",
+    "ground_truth": "INVALID_CVV"
+  },
+  {
+    "payment_id": "pay_eval_00088",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_2391",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00089",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_3081",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00090",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_8624",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00091",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_8771",
+    "ground_truth": "INVALID_CVV"
+  },
+  {
+    "payment_id": "pay_eval_00092",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_3554",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00093",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_1350",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00094",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_2683",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00095",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_8107",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00096",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "card_limit_exceeded_for_the_day",
+    "customer_id": "cust_4457",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00097",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_5799",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00098",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_6341",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00099",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_3147",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00100",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_6796",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00101",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "issuer_bank_rejected_transaction_temporarily",
+    "customer_id": "cust_9466",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00102",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_3142",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00103",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_9364",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00104",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_4000",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00105",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_3454",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00106",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_2971",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00107",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_9492",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00108",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_2738",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00109",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "issuer_bank_rejected_transaction_temporarily",
+    "customer_id": "cust_5071",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00110",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_2601",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00111",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_1456",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00112",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_8262",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00113",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_9391",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00114",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_8411",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00115",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_8832",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00116",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_9572",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00117",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "issuer_bank_rejected_transaction_temporarily",
+    "customer_id": "cust_4319",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00118",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_7826",
+    "ground_truth": "INVALID_CVV"
+  },
+  {
+    "payment_id": "pay_eval_00119",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_6177",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00120",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_8017",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00121",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_5960",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00122",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_3530",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00123",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "customer_bank_server_not_responding",
+    "customer_id": "cust_6999",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00124",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_8663",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00125",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_7525",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00126",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "issuer_bank_rejected_transaction_temporarily",
+    "customer_id": "cust_4665",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00127",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_9447",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00128",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_4207",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00129",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_6995",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00130",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_8514",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00131",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_7297",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00132",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_5840",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00133",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_2848",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00134",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "card_limit_exceeded_for_the_day",
+    "customer_id": "cust_4744",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00135",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "card_limit_exceeded_for_the_day",
+    "customer_id": "cust_2377",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00136",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_3974",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00137",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_7918",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00138",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_5237",
+    "ground_truth": "INVALID_CVV"
+  },
+  {
+    "payment_id": "pay_eval_00139",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_9434",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00140",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_6358",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00141",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_4003",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00142",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_5406",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00143",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "customer_bank_server_not_responding",
+    "customer_id": "cust_2451",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00144",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_4643",
+    "ground_truth": "INVALID_CVV"
+  },
+  {
+    "payment_id": "pay_eval_00145",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_2993",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00146",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_7844",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00147",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "customer_bank_server_not_responding",
+    "customer_id": "cust_3117",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00148",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_4906",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00149",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "customer_bank_server_not_responding",
+    "customer_id": "cust_5290",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00150",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_6111",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00151",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_4372",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00152",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_3914",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00153",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_1297",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00154",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "card_limit_exceeded_for_the_day",
+    "customer_id": "cust_1251",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00155",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_4104",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00156",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_8324",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00157",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_8080",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00158",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_7440",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00159",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "card_limit_exceeded_for_the_day",
+    "customer_id": "cust_4525",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00160",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "card_limit_exceeded_for_the_day",
+    "customer_id": "cust_4254",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00161",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_3289",
+    "ground_truth": "INVALID_CVV"
+  },
+  {
+    "payment_id": "pay_eval_00162",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_1891",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00163",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_2158",
+    "ground_truth": "INVALID_CVV"
+  },
+  {
+    "payment_id": "pay_eval_00164",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_8057",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00165",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_7240",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00166",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "issuer_bank_rejected_transaction_temporarily",
+    "customer_id": "cust_5619",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00167",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_5801",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00168",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_3581",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00169",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_5312",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00170",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_9963",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00171",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_6071",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00172",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_1017",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00173",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_8776",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00174",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_4292",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00175",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_1081",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00176",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_2470",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00177",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_1682",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00178",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_5984",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00179",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_9670",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00180",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_7381",
+    "ground_truth": "INVALID_CVV"
+  },
+  {
+    "payment_id": "pay_eval_00181",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_9096",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00182",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_3371",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00183",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_9404",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00184",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_9282",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00185",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_9263",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00186",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_1263",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00187",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_4767",
+    "ground_truth": "INVALID_CVV"
+  },
+  {
+    "payment_id": "pay_eval_00188",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_3180",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00189",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_7170",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00190",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_1831",
+    "ground_truth": "INVALID_CVV"
+  },
+  {
+    "payment_id": "pay_eval_00191",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_9707",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00192",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_5321",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00193",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_2148",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00194",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_9768",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00195",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_2082",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00196",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_5131",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00197",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_5350",
+    "ground_truth": "INVALID_CVV"
+  },
+  {
+    "payment_id": "pay_eval_00198",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_4362",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00199",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_8542",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00200",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_2257",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00201",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_5707",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00202",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_4248",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00203",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_6435",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00204",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_5987",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00205",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_1204",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00206",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_5403",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00207",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "card_limit_exceeded_for_the_day",
+    "customer_id": "cust_4566",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00208",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_9462",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00209",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_8640",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00210",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_4264",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00211",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_8748",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00212",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_2252",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00213",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_5401",
+    "ground_truth": "INVALID_CVV"
+  },
+  {
+    "payment_id": "pay_eval_00214",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_2222",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00215",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_9586",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00216",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_3172",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00217",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_9335",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00218",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_6983",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00219",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_7456",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00220",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_9055",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00221",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_5947",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00222",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_6635",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00223",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_6428",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00224",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_6542",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00225",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_4207",
+    "ground_truth": "INVALID_CVV"
+  },
+  {
+    "payment_id": "pay_eval_00226",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_5748",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00227",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_7437",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00228",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_2251",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00229",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_5508",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00230",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_2666",
+    "ground_truth": "INVALID_CVV"
+  },
+  {
+    "payment_id": "pay_eval_00231",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_5679",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00232",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_5084",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00233",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "card_limit_exceeded_for_the_day",
+    "customer_id": "cust_9371",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00234",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_7116",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00235",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_1475",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00236",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_7554",
+    "ground_truth": "INVALID_CVV"
+  },
+  {
+    "payment_id": "pay_eval_00237",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "customer_bank_server_not_responding",
+    "customer_id": "cust_9998",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00238",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_1810",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00239",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "customer_bank_server_not_responding",
+    "customer_id": "cust_8386",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00240",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_5689",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00241",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_3085",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00242",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_6630",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00243",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_5262",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00244",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_5928",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00245",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_7461",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00246",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_3648",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00247",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_9144",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00248",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_6453",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00249",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "card_limit_exceeded_for_the_day",
+    "customer_id": "cust_8002",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00250",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_4999",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00251",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_2492",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00252",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_5232",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00253",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_1329",
+    "ground_truth": "INVALID_CVV"
+  },
+  {
+    "payment_id": "pay_eval_00254",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_7272",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00255",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_4440",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00256",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_2016",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00257",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_6900",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00258",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_9670",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00259",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_4538",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00260",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_7300",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00261",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_8075",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00262",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "customer_bank_server_not_responding",
+    "customer_id": "cust_1357",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00263",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_8754",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00264",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "card_limit_exceeded_for_the_day",
+    "customer_id": "cust_1002",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00265",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_9648",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00266",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "invalid_cvv",
+    "customer_id": "cust_5070",
+    "ground_truth": "INVALID_CVV"
+  },
+  {
+    "payment_id": "pay_eval_00267",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_3529",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00268",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_2784",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00269",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "customer_bank_server_not_responding",
+    "customer_id": "cust_8492",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00270",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_1647",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00271",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_4810",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00272",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "expired_card",
+    "customer_id": "cust_5977",
+    "ground_truth": "EXPIRED_CARD"
+  },
+  {
+    "payment_id": "pay_eval_00273",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "card_limit_exceeded_for_the_day",
+    "customer_id": "cust_5125",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00274",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_2837",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00275",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_9592",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00276",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "customer_bank_server_not_responding",
+    "customer_id": "cust_7358",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00277",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_1018",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00278",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_8547",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00279",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_4970",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00280",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_9962",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00281",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_6036",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00282",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_9164",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00283",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "issuer_bank_rejected_transaction_temporarily",
+    "customer_id": "cust_7881",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00284",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_7952",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00285",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "customer_bank_server_not_responding",
+    "customer_id": "cust_9076",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00286",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_7890",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00287",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_4245",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00288",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_9271",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00289",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_4283",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00290",
+    "amount": 9999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_4177",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00291",
+    "amount": 499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_5342",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00292",
+    "amount": 999,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_2785",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00293",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "customer_bank_server_not_responding",
+    "customer_id": "cust_4068",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00294",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "issuer_bank_rejected_transaction_temporarily",
+    "customer_id": "cust_7832",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00295",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "customer_bank_server_not_responding",
+    "customer_id": "cust_3398",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00296",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "customer_bank_server_not_responding",
+    "customer_id": "cust_4488",
+    "ground_truth": "BANK_TIMEOUT"
+  },
+  {
+    "payment_id": "pay_eval_00297",
+    "amount": 2499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_3325",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00298",
+    "amount": 4999,
+    "currency": "INR",
+    "error_code": "card_declined",
+    "customer_id": "cust_1985",
+    "ground_truth": "CARD_DECLINED"
+  },
+  {
+    "payment_id": "pay_eval_00299",
+    "amount": 1499,
+    "currency": "INR",
+    "error_code": "insufficient_funds",
+    "customer_id": "cust_6147",
+    "ground_truth": "INSUFFICIENT_FUNDS"
+  },
+  {
+    "payment_id": "pay_eval_00300",
+    "amount": 199,
+    "currency": "INR",
+    "error_code": "bank_timeout",
+    "customer_id": "cust_3713",
+    "ground_truth": "BANK_TIMEOUT"
+  }
+]

@@ -3,3 +3,4 @@ python-dotenv==1.0.1
 groq==0.11.0
 flask==3.0.3
 pandas==2.2.2
+httpx==0.27.2

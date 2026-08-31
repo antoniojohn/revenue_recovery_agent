@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RecoverX — Agentic Revenue Recovery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand: #3266FF;
+    --brand-dark: #1E4FE0;
+    --brand-tint: #EAF1FF;
+    --navy: #0A2540;
+    --llm: #7C5CFC;
+    --llm-tint: #F3EEFF;
+    --success: #12B76A;
+    --success-tint: #E7F9F0;
+    --warning: #F79009;
+    --warning-tint: #FFF6E9;
+    --danger: #F04438;
+    --danger-tint: #FEEEEC;
+    --bg: #F7F8FB;
+    --surface: #FFFFFF;
+    --surface-alt: #F0F3F9;
+    --border: #E6E9F0;
+    --text: #10162B;
+    --text-muted: #6B7180;
+    --text-faint: #9AA0AC;
+    --radius: 12px;
+    --shadow-sm: 0 1px 2px rgba(16,22,43,0.04);
+    --shadow-md: 0 4px 16px rgba(16,22,43,0.06);
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html,body{ height:100%; }
+  body{
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+  }
+  a{ color:inherit; text-decoration:none; }
+  button{ font-family: inherit; cursor:pointer; }
+  ::selection{ background: var(--brand-tint); }
+
+  /* focus visibility */
+  button:focus-visible, [tabindex]:focus-visible{
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+  }
+
+  .app{
+    display:grid;
+    grid-template-columns: 232px 1fr;
+    min-height:100vh;
+  }
+
+  /* ---------- Sidebar (Razorpay-style: dark logo bar + light nav panel) ---------- */
+  .sidebar{
+    background: var(--surface);
+    color: var(--text);
+    display:flex;
+    flex-direction:column;
+    padding: 0 0 16px 0;
+    position: sticky;
+    top:0;
+    height:100vh;
+    border-right: 1px solid var(--border);
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding: 16px 18px;
+    background: #05070F;
+  }
+  .brand-mark{
+    width:28px; height:28px; border-radius:7px;
+    background: var(--brand);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .brand-mark svg{ width:15px; height:15px; }
+  .brand-name{
+    font-family: var(--font-display);
+    font-weight:700;
+    font-size:16px;
+    color:#fff;
+    letter-spacing: -0.01em;
+    line-height:1.2;
+  }
+  .brand-sub{
+    font-size:10px;
+    color:#828BA3;
+    letter-spacing:.03em;
+    margin-top: 1px;
+    display:flex; align-items:center; gap:4px;
+  }
+  .brand-sub .rzp-mark{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:11px; height:11px; border-radius:3px;
+    background: var(--brand);
+    flex-shrink:0;
+  }
+  .brand-sub .rzp-mark svg{ width:7px; height:7px; }
+  .brand-sub b{ color:#C6CBDA; font-weight:600; }
+
+  .sidebar-scroll{ flex:1; overflow-y:auto; padding: 18px 12px 0 12px; }
+  .nav-section-label{
+    font-size:10.5px;
+    font-weight:700;
+    color: var(--text-faint);
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    padding: 0 10px;
+    margin-bottom:8px;
+  }
+  .nav{ display:flex; flex-direction:column; gap:1px; }
+  .nav-item{
+    display:flex; align-items:center; gap:10px;
+    padding: 9px 10px;
+    border-radius: 8px;
+    font-size:13.5px;
+    font-weight:500;
+    color: #3D4356;
+    transition: background .15s ease, color .15s ease;
+    border:none;
+    background:none;
+    width:100%;
+    text-align:left;
+  }
+  .nav-item svg{ width:17px; height:17px; opacity:.7; flex-shrink:0; }
+  .nav-item:hover{ background: var(--surface-alt); color: var(--text); }
+  .nav-item.active{ background: var(--brand-tint); color: var(--brand-dark); font-weight:600; }
+  .nav-item.active svg{ opacity:1; color: var(--brand); }
+
+  .sidebar-footer{ margin-top:auto; padding: 14px 12px 0 12px; }
+  .agent-status{
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .agent-status-top{ display:flex; align-items:center; gap:8px; }
+  .pulse-dot{
+    width:8px; height:8px; border-radius:50%;
+    background: var(--success);
+    box-shadow: 0 0 0 0 rgba(18,183,106,0.6);
+    animation: pulse 1.8s infinite;
+    flex-shrink:0;
+  }
+  @keyframes pulse{
+    0%{ box-shadow: 0 0 0 0 rgba(18,183,106,0.55); }
+    70%{ box-shadow: 0 0 0 6px rgba(18,183,106,0); }
+    100%{ box-shadow: 0 0 0 0 rgba(18,183,106,0); }
+  }
+  .agent-status-title{ font-size:12.5px; font-weight:600; color: var(--text); }
+  .agent-status-sub{ font-size:11px; color: var(--text-muted); line-height:1.4; }
+  .test-mode-chip{
+    margin-top:12px;
+    font-size:10.5px;
+    color: var(--text-faint);
+    display:flex; align-items:center; gap:6px;
+    padding: 0 4px;
+  }
+  .test-mode-chip .dot{ width:5px; height:5px; border-radius:50%; background:var(--warning); }
+
+  /* ---------- Main ---------- */
+  .main{ display:flex; flex-direction:column; min-width:0; }
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 20px 32px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    position: sticky; top:0; z-index:5;
+  }
+  .topbar-title{ font-family: var(--font-display); font-size:20px; font-weight:700; letter-spacing:-0.01em; }
+  .topbar-sub{ font-size:12.5px; color:var(--text-muted); margin-top:2px; }
+  .topbar-right{ display:flex; align-items:center; gap:12px; }
+
+  .badge{
+    font-size:11px; font-weight:600; padding:5px 10px; border-radius:100px;
+    display:inline-flex; align-items:center; gap:6px;
+  }
+  .badge-test{ background: var(--warning-tint); color:#B54708; }
+  .badge-test .dot{ width:6px; height:6px; border-radius:50%; background: var(--warning); }
+  .badge-live{ background: var(--success-tint); color:#0A7A47; }
+  .badge-live .dot{ width:6px; height:6px; border-radius:50%; background: var(--success); }
+  .badge-demo{ background: var(--surface-alt); color: var(--text-muted); }
+  .badge-demo .dot{ width:6px; height:6px; border-radius:50%; background: var(--text-faint); }
+  #refreshBtn{ padding: 10px; }
+  #refreshBtn svg{ width:15px; height:15px; }
+  #refreshBtn.spinning svg{ animation: spin 0.8s linear infinite; }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:13.5px; font-weight:600;
+    padding: 10px 16px;
+    border-radius: 9px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    transition: all .15s ease;
+  }
+  .btn:hover{ border-color:#C9CFE0; }
+  .btn-primary{
+    background: var(--brand);
+    border-color: var(--brand);
+    color:#fff;
+    box-shadow: 0 1px 2px rgba(50,102,255,0.3), 0 4px 10px rgba(50,102,255,0.18);
+  }
+  .btn-primary:hover{ background: var(--brand-dark); border-color:var(--brand-dark); }
+  .btn-primary:disabled{ opacity:.6; cursor:default; box-shadow:none; }
+  .btn svg{ width:15px; height:15px; }
+
+  .content{ padding: 28px 32px 60px 32px; flex:1; }
+  .view{ display:none; animation: fadein .25s ease; }
+  .view.active{ display:block; }
+  @keyframes fadein{ from{ opacity:0; transform:translateY(4px);} to{opacity:1; transform:none;} }
+
+  /* ---------- Metric cards ---------- */
+  .metric-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:16px;
+    margin-bottom:24px;
+  }
+  .metric-card{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    box-shadow: var(--shadow-sm);
+  }
+  .metric-label{
+    font-size:12px; color:var(--text-muted); font-weight:500;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .metric-icon{ width:28px; height:28px; border-radius:7px; display:flex; align-items:center; justify-content:center; }
+  .metric-icon svg{ width:15px; height:15px; }
+  .icon-blue{ background: var(--brand-tint); color: var(--brand); }
+  .icon-green{ background: var(--success-tint); color: var(--success); }
+  .icon-amber{ background: var(--warning-tint); color:#B54708; }
+  .icon-violet{ background: var(--llm-tint); color: var(--llm); }
+
+  .metric-value{
+    font-family: var(--font-display);
+    font-size: 27px;
+    font-weight:700;
+    margin-top:10px;
+    letter-spacing:-0.01em;
+    font-variant-numeric: tabular-nums;
+  }
+  .metric-delta{ font-size:11.5px; margin-top:6px; color: var(--text-faint); }
+  .metric-delta.up{ color: var(--success); }
+
+  /* ---------- Panels / layout ---------- */
+  .grid-2{ display:grid; grid-template-columns: 2fr 1fr; gap:16px; margin-bottom:16px; align-items:start; }
+  .panel{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    overflow:hidden;
+    min-width: 0; /* grid items default to min-width:auto, which lets a wide
+                     table push the panel past its track and overlap its
+                     neighbor — this is the actual fix for that. */
+  }
+  .panel-header{
+    padding: 20px 22px;
+    border-bottom: 1px solid var(--border);
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .panel-title{ font-size:14px; font-weight:600; }
+  .panel-title-sub{ font-size:11.5px; color:var(--text-muted); margin-top:2px; font-weight:400; }
+  .panel-body{ padding: 20px 22px; }
+  .link-btn{ font-size:12px; font-weight:600; color:var(--brand); }
+
+  /* decision split bar */
+  .split-bar{ display:flex; height:10px; border-radius:100px; overflow:hidden; margin: 4px 0 14px 0; }
+  .split-bar .seg-rule{ background: var(--brand); }
+  .split-bar .seg-llm{ background: var(--llm); }
+  .split-legend{ display:flex; gap:20px; }
+  .split-legend-item{ display:flex; align-items:center; gap:7px; font-size:12.5px; color:var(--text-muted); }
+  .split-legend-item .sw{ width:9px; height:9px; border-radius:3px; }
+  .split-legend-item b{ color:var(--text); font-weight:600; }
+
+  /* table */
+  table{ width:100%; border-collapse: collapse; }
+  th{
+    text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.04em;
+    color: var(--text-faint); font-weight:600; padding: 18px 14px 14px 14px;
+    border-bottom: 1px solid var(--border);
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  td{ padding: 26px 14px; font-size:13.5px; line-height:1.5; border-bottom: 1px solid var(--border); vertical-align:middle; overflow-wrap:break-word; }
+  /* Fixed column proportions for the Recent Decisions table — this is what
+     actually keeps every column, including Outcome, inside the panel at
+     any window width instead of the table growing past it. */
+  .table-recent-decisions{ table-layout: fixed; min-width: 660px; }
+  .table-scroll{ overflow-x:auto; }
+  .table-recent-decisions td{ overflow:hidden; }
+  .table-recent-decisions col.col-txn{ width:26%; }
+  .table-recent-decisions col.col-amount{ width:12%; }
+  .table-recent-decisions col.col-source{ width:15%; }
+  .table-recent-decisions col.col-action{ width:27%; }
+  .table-recent-decisions col.col-outcome{ width:20%; }
+  /* Transaction ID is never truncated — the table has a min-width and
+     scrolls horizontally instead, so the full ID is always readable. */
+  .table-recent-decisions .txn-id{ overflow:visible; white-space:nowrap; }
+  .table-recent-decisions th{ overflow:visible; text-overflow:clip; }
+  tbody tr{ transition: background .5s ease; }
+  tbody tr:last-child td{ border-bottom:none; }
+  tbody tr.row-clickable:hover{ background: var(--surface-alt); cursor:pointer; }
+  tbody tr.row-new{ animation: highlight-row 1.6s ease; }
+  @keyframes highlight-row{ 0%{ background: var(--brand-tint);} 100%{ background:transparent; } }
+  .txn-id{ font-family: var(--font-mono); font-size:12px; color: var(--text-muted); white-space: nowrap; }
+  .amount{ font-family: var(--font-mono); font-weight:600; }
+
+  .chip{
+    display:inline-flex; align-items:center; gap:5px;
+    font-size:11px; font-weight:600; padding:4px 9px; border-radius:100px;
+    white-space:nowrap;
+  }
+  /* Outcome badges (Recovered / Failed / Escalated / Pending Retry) all
+     render at the same pill size regardless of label length. */
+  .chip-outcome{
+    width: 120px;
+    justify-content:center;
+  }
+  .chip-rule{ background: var(--brand-tint); color: var(--brand-dark); }
+  .chip-llm{ background: var(--llm-tint); color: var(--llm); }
+  .chip-success{ background: var(--success-tint); color:#0A7A47; }
+  .chip-warning{ background: var(--warning-tint); color:#B54708; }
+  .chip-danger{ background: var(--danger-tint); color:#B42318; }
+  .chip-muted{ background: var(--surface-alt); color: var(--text-muted); }
+  .chip .dot{ width:5px; height:5px; border-radius:50%; background:currentColor; }
+
+  /* agent log */
+  .log-list{ display:flex; flex-direction:column; }
+  .log-item{ display:flex; gap:12px; padding: 10px 0; border-bottom: 1px dashed var(--border); }
+  .log-item:last-child{ border-bottom:none; padding-bottom:0; }
+  .log-time{ font-family: var(--font-mono); font-size:11px; color: var(--text-faint); width:52px; flex-shrink:0; padding-top:1px;}
+  .log-dot{ width:6px; height:6px; border-radius:50%; margin-top:5px; flex-shrink:0; }
+  .log-text{ font-size:12.5px; color: var(--text); line-height:1.5; }
+  .log-text b{ font-weight:600; }
+  .log-text span.muted{ color: var(--text-muted); }
+
+  /* ---------- Pipeline (signature element) ---------- */
+  .pipeline{
+    display:flex; align-items:center;
+    padding: 22px 8px 8px 8px;
+  }
+  .pipe-node{
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    width: 25%;
+    text-align:center;
+    position:relative;
+  }
+  .pipe-circle{
+    width:38px; height:38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background: var(--surface-alt);
+    border: 2px solid var(--border);
+    color: var(--text-faint);
+    transition: all .3s ease;
+    z-index:2;
+    position:relative;
+  }
+  .pipe-circle svg{ width:16px; height:16px; }
+  .pipe-node.done .pipe-circle{ background: var(--success-tint); border-color: var(--success); color: var(--success); }
+  .pipe-node.active .pipe-circle{ background: var(--brand-tint); border-color: var(--brand); color: var(--brand); animation: ring 1.4s infinite; }
+  .pipe-node.llm.done .pipe-circle{ background: var(--llm-tint); border-color: var(--llm); color: var(--llm); }
+  .pipe-node.rejected .pipe-circle{ background: var(--danger-tint); border-color: var(--danger); color: var(--danger); }
+  @keyframes ring{
+    0%{ box-shadow: 0 0 0 0 rgba(50,102,255,0.35); }
+    70%{ box-shadow: 0 0 0 7px rgba(50,102,255,0); }
+    100%{ box-shadow: 0 0 0 0 rgba(50,102,255,0); }
+  }
+  .pipe-label{ font-size:11.5px; font-weight:600; color: var(--text); }
+  .pipe-sub{ font-size:10.5px; color: var(--text-faint); }
+  .pipe-line{
+    position:absolute; top:19px; left:50%; width:100%; height:2px;
+    background: var(--border); z-index:1;
+  }
+  .pipe-node:last-child .pipe-line{ display:none; }
+  .pipe-node.done .pipe-line{ background: var(--success); }
+
+  /* ---------- Transactions — full-width table ---------- */
+  .txn-table-wrap{ overflow-x:auto; }
+  .txn-list-item{
+    display:flex; justify-content:space-between; align-items:center;
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--border);
+    cursor:pointer;
+    transition: background .15s ease;
+    gap: 16px;
+  }
+  .txn-list-item:last-child{ border-bottom:none; }
+  .txn-list-item:hover{ background: var(--surface-alt); }
+  .txn-list-item.selected{ background: var(--brand-tint); }
+  .txn-list-left{ display:flex; align-items:center; gap:14px; min-width:0; }
+  .txn-list-left .txn-avatar{
+    width:34px; height:34px; border-radius:8px; flex-shrink:0;
+    background: var(--surface-alt); color: var(--text-faint);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .txn-list-left .txn-avatar svg{ width:16px; height:16px; }
+  .txn-list-left b{ font-family: var(--font-mono); font-size:13px; display:block; }
+  .txn-list-left span{ font-size:12px; color: var(--text-muted); }
+  .txn-list-mid{ flex:1; display:flex; align-items:center; gap:28px; }
+  .txn-list-mid .col{ font-size:12.5px; color: var(--text-muted); min-width:110px; }
+  .txn-list-right{ text-align:right; display:flex; align-items:center; gap:18px; flex-shrink:0; }
+  .txn-list-right .amt{ font-family: var(--font-mono); font-weight:600; font-size:13.5px; display:block; }
+  .txn-list-right .chev{ color: var(--text-faint); }
+  .txn-list-right .chev svg{ width:16px; height:16px; }
+
+  /* ---------- Detail drawer (slide-over) ---------- */
+  .drawer-backdrop{
+    position:fixed; inset:0; background: rgba(10,16,33,0.38);
+    opacity:0; pointer-events:none; transition: opacity .2s ease;
+    z-index: 40;
+  }
+  .drawer-backdrop.open{ opacity:1; pointer-events:auto; }
+  .drawer{
+    position:fixed; top:0; right:0; height:100vh; width:min(480px, 100vw);
+    background: var(--surface);
+    box-shadow: -8px 0 32px rgba(16,22,43,0.14);
+    transform: translateX(100%);
+    transition: transform .25s cubic-bezier(.4,0,.2,1);
+    z-index: 41;
+    display:flex; flex-direction:column;
+  }
+  .drawer.open{ transform: translateX(0); }
+  .drawer-header{
+    display:flex; align-items:flex-start; justify-content:space-between;
+    padding: 20px 24px; border-bottom: 1px solid var(--border); flex-shrink:0;
+  }
+  .drawer-close{
+    width:30px; height:30px; border-radius:8px; border:1px solid var(--border);
+    background:var(--surface); display:flex; align-items:center; justify-content:center;
+    color: var(--text-muted); flex-shrink:0;
+  }
+  .drawer-close:hover{ background: var(--surface-alt); color:var(--text); }
+  .drawer-close svg{ width:15px; height:15px; }
+  .drawer-body{ padding: 20px 24px 32px 24px; overflow-y:auto; flex:1; }
+
+  .detail-header{ display:flex; align-items:baseline; justify-content:space-between; }
+  .detail-id{ font-family: var(--font-mono); font-size:13px; color: var(--text-muted); }
+  .detail-amt{ font-family: var(--font-display); font-size:24px; font-weight:700; }
+
+  .kv-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; margin-top:6px; }
+  .kv{ }
+  .kv-label{ font-size:11px; color: var(--text-faint); text-transform:uppercase; letter-spacing:.03em; margin-bottom:4px; font-weight:600;}
+  .kv-value{ font-size:13.5px; font-weight:500; }
+  .kv-value.mono{ font-family: var(--font-mono); font-size:12.5px; }
+
+  .reasoning-box{
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 16px;
+    font-size: 12.5px;
+    line-height:1.6;
+    color: var(--text);
+  }
+  .reasoning-box .tag{ font-weight:700; color: var(--llm); }
+
+  @media (max-width: 640px){
+    .txn-list-mid{ display:none; }
+    .drawer{ width:100vw; }
+  }
+
+  /* ---------- Analytics ---------- */
+  .analytics-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+  .bar-row{ display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+  .bar-row:last-child{ margin-bottom:0; }
+  .bar-label{ width:150px; font-size:12.5px; color: var(--text-muted); flex-shrink:0; }
+  .bar-track{ flex:1; height:9px; background: var(--surface-alt); border-radius:100px; overflow:hidden; }
+  .bar-fill{ height:100%; border-radius:100px; background: var(--brand); transition: width 1s ease; }
+  .bar-value{ width:56px; text-align:right; font-size:12.5px; font-weight:600; font-variant-numeric: tabular-nums; }
+
+  .sparkline-wrap{ padding: 4px 0 0 0; }
+
+  .donut-wrap{ display:flex; align-items:center; gap: 22px; }
+  .donut-legend{ display:flex; flex-direction:column; gap:10px; }
+  .donut-legend-item{ display:flex; align-items:center; gap:8px; font-size:12.5px; }
+  .donut-legend-item .sw{ width:10px; height:10px; border-radius:3px; }
+  .donut-legend-item b{ font-weight:600; }
+
+  .empty-hint{ font-size:12px; color: var(--text-faint); text-align:center; padding: 30px 0; }
+
+  @media (max-width: 980px){
+    .metric-grid{ grid-template-columns: repeat(2,1fr); }
+    .grid-2, .inspector-grid, .analytics-grid{ grid-template-columns: 1fr; }
+    .app{ grid-template-columns: 1fr; }
+    .sidebar{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 13L10 19L20 5" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="brand-name">RecoverX</div>
+        <div class="brand-sub">
+          <span class="rzp-mark"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 20 18 4h-6L4 20h2Z" fill="white"/></svg></span>
+          Built on <b>Razorpay</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-scroll">
+      <div class="nav-section-label">Workspace</div>
+      <nav class="nav">
+        <button class="nav-item active" data-view="dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+          Dashboard
+        </button>
+        <button class="nav-item" data-view="transactions">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10h18M7 15h2M13 15h4"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg>
+          Transactions
+        </button>
+        <button class="nav-item" data-view="analytics">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V9M11 19V4M18 19v-6"/></svg>
+          Analytics
+        </button>
+      </nav>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="agent-status">
+        <div class="agent-status-top">
+          <span class="pulse-dot"></span>
+          <span class="agent-status-title">Agent Active</span>
+        </div>
+        <div class="agent-status-sub">Monitoring Razorpay webhooks for failed payments in real time.</div>
+      </div>
+      <div class="test-mode-chip"><span class="dot"></span> Connected · Test Mode</div>
+    </div>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <div class="main">
+
+    <div class="topbar">
+      <div>
+        <div class="topbar-title" id="topbarTitle">Dashboard</div>
+        <div class="topbar-sub" id="topbarSub">Live overview of recovery performance</div>
+      </div>
+      <div class="topbar-right">
+        <span class="badge" id="dataSourceBadge"><span class="dot"></span> Checking data source…</span>
+        <span class="badge badge-test"><span class="dot"></span> Razorpay Test Mode</span>
+        <button class="btn" id="refreshBtn" title="Reload logs/audit_log.json and logs/summary_report.json">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+        </button>
+        <button class="btn btn-primary" id="simBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+          Run Recovery Simulation
+        </button>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ============ DASHBOARD VIEW ============ -->
+      <section class="view active" id="view-dashboard">
+
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-label">Revenue at Risk <span class="metric-icon icon-amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L14.7 3.86a2 2 0 0 0-3.4 0Z"/></svg></span></div>
+            <div class="metric-value">₹<span id="m-risk">4,82,300</span></div>
+            <div class="metric-delta" id="m-risk-delta">128 failed transactions this week</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Revenue Recovered <span class="metric-icon icon-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span></div>
+            <div class="metric-value">₹<span id="m-recovered">3,21,940</span></div>
+            <div class="metric-delta up" id="m-recovered-delta">↑ live · updates during simulation</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Recovery Rate <span class="metric-icon icon-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12a10 10 0 1 1-5.93-9.14"/><path d="M22 2 12 12"/></svg></span></div>
+            <div class="metric-value"><span id="m-rate">66.7</span>%</div>
+            <div class="metric-delta">Target: 60% · above target</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Transactions Processed <span class="metric-icon icon-violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></span></div>
+            <div class="metric-value" id="m-processed">128</div>
+            <div class="metric-delta">Since agent activation</div>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-bottom:16px;">
+          <div class="panel-header">
+            <div>
+              <div class="panel-title">Recent Recovery Decisions</div>
+              <div class="panel-title-sub">Latest transactions processed by the agent</div>
+            </div>
+            <a class="link-btn" data-goto="transactions">View all →</a>
+          </div>
+          <div class="panel-body" style="padding:0;">
+            <div class="table-scroll">
+            <table class="table-recent-decisions">
+              <colgroup>
+                <col class="col-txn"><col class="col-amount"><col class="col-source"><col class="col-action"><col class="col-outcome">
+              </colgroup>
+              <thead>
+                <tr><th>Transaction</th><th>Amount</th><th>Source</th><th>Action</th><th>Outcome</th></tr>
+              </thead>
+              <tbody id="recentDecisionsBody"></tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <div class="panel-title">Rule vs LLM Decisions</div>
+              <div class="panel-title-sub">How diagnoses were made</div>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="split-bar">
+              <div class="seg-rule" style="width:78%"></div>
+              <div class="seg-llm" style="width:22%"></div>
+            </div>
+            <div class="split-legend">
+              <div class="split-legend-item"><span class="sw" style="background:var(--brand)"></span>Rule Engine <b id="split-rule-pct">78%</b></div>
+              <div class="split-legend-item"><span class="sw" style="background:var(--llm)"></span>LLM Fallback <b id="split-llm-pct">22%</b></div>
+            </div>
+
+            <div class="panel-title" style="margin-top:22px; margin-bottom:4px;">Agent Activity Log</div>
+            <div class="log-list" id="activityLog" style="margin-top:8px;"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ TRANSACTIONS VIEW ============ -->
+      <section class="view" id="view-transactions">
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <div class="panel-title">Transactions</div>
+              <div class="panel-title-sub" id="txnListCount">128 total</div>
+            </div>
+          </div>
+          <div class="txn-table-wrap" id="txnList"></div>
+        </div>
+      </section>
+
+      <!-- ============ ANALYTICS VIEW ============ -->
+      <section class="view" id="view-analytics">
+        <div class="analytics-grid">
+
+          <div class="panel">
+            <div class="panel-header"><div><div class="panel-title">Failure Categories</div><div class="panel-title-sub">Root causes of failed payments</div></div></div>
+            <div class="panel-body" id="failureCategories"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header"><div><div class="panel-title">Decision Source</div><div class="panel-title-sub">Rule engine vs LLM fallback usage</div></div></div>
+            <div class="panel-body">
+              <div class="donut-wrap">
+                <svg width="120" height="120" viewBox="0 0 42 42" style="flex-shrink:0;">
+                  <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#E6E9F0" stroke-width="6"></circle>
+                  <circle id="donutRule" cx="21" cy="21" r="15.9" fill="transparent" stroke="#3266FF" stroke-width="6"
+                    stroke-dasharray="78 22" stroke-dashoffset="25" stroke-linecap="round"></circle>
+                  <circle id="donutLlm" cx="21" cy="21" r="15.9" fill="transparent" stroke="#7C5CFC" stroke-width="6"
+                    stroke-dasharray="22 78" stroke-dashoffset="-53" stroke-linecap="round"></circle>
+                </svg>
+                <div class="donut-legend">
+                  <div class="donut-legend-item"><span class="sw" style="background:var(--brand)"></span>Rule Engine <b id="donutRulePct">78%</b></div>
+                  <div class="donut-legend-item"><span class="sw" style="background:var(--llm)"></span>LLM Fallback <b id="donutLlmPct">22%</b></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header"><div><div class="panel-title">Recovery Outcomes</div><div class="panel-title-sub">What happened after each decision</div></div></div>
+            <div class="panel-body" id="outcomesBreakdown"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header"><div><div class="panel-title">Exceptions & Escalations</div><div class="panel-title-sub">Cases that needed human review</div></div></div>
+            <div class="panel-body" id="exceptionsList"></div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<div class="drawer" id="detailDrawer">
+  <div class="drawer-header">
+    <div class="detail-header" style="width:100%;" id="drawerHeader"></div>
+    <button class="drawer-close" id="drawerClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+</div>
+
+<script>
+/* ============================================================
+   Shared vocabulary — matches diagnose.py / decide.py exactly,
+   so live data and demo data render identically.
+   ============================================================ */
+const CAUSE_LABELS = {
+  INSUFFICIENT_FUNDS: "Insufficient Funds",
+  CARD_DECLINED: "Card Declined",
+  EXPIRED_CARD: "Expired Card",
+  BANK_TIMEOUT: "Bank Timeout",
+  INVALID_CVV: "Invalid CVV",
+  UNKNOWN: "Unclassified (LLM fallback)",
+};
+// Which causes the rule engine itself resolves vs. which only ever
+// arrive via the LLM fallback (mirrors RULE_MAP / KNOWN_CAUSES).
+const RULE_ONLY_CAUSES = ["INSUFFICIENT_FUNDS","CARD_DECLINED","EXPIRED_CARD","BANK_TIMEOUT","INVALID_CVV"];
+
+const ACTION_LABELS = {
+  RETRY_AFTER_DELAY: "Retry after delay",
+  RETRY_IMMEDIATE: "Retry immediately",
+  NOTIFY_USER: "Notify customer, request re-entry",
+  NOTIFY_USER_CARD_UPDATE: "Request card update",
+  ESCALATE: "Escalate",
+};
+
+const MIN_RETRY_AMOUNT = 150; // mirrors decide.py's policy gate threshold
+
+function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+function rnd(min,max){ return Math.floor(Math.random()*(max-min+1))+min; }
+function fmtINR(n){ return n.toLocaleString('en-IN'); }
+function nowClock(){ const d = new Date(); return `${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`; }
+
+/* ============================================================
+   Demo-mode data generator — used only when logs/audit_log.json
+   isn't reachable (e.g. opened as a local file with no server).
+   Mirrors the real diagnose.py -> decide.py logic exactly so the
+   UI behaves the same either way.
+   ============================================================ */
+let txnSeq = 82931;
+function makeTxn(){
+  const causes = Object.keys(CAUSE_LABELS);
+  const weights = [0.30, 0.18, 0.16, 0.14, 0.10, 0.12]; // roughly matches generate_data.py's skew
+  let r = Math.random() * weights.reduce((a,b)=>a+b,0);
+  let cause = causes[0];
+  for(let i=0;i<causes.length;i++){ if(r < weights[i]){ cause = causes[i]; break; } r -= weights[i]; }
+
+  const source = RULE_ONLY_CAUSES.includes(cause) ? "rule" : "llm";
+  const amount = pick([199,499,999,1499,2499,4999,9999]);
+
+  const actionByCause = {
+    INSUFFICIENT_FUNDS: "RETRY_AFTER_DELAY",
+    BANK_TIMEOUT: "RETRY_IMMEDIATE",
+    CARD_DECLINED: "RETRY_IMMEDIATE",
+    INVALID_CVV: "NOTIFY_USER",
+    EXPIRED_CARD: "NOTIFY_USER_CARD_UPDATE",
+    UNKNOWN: "ESCALATE",
+  };
+  const maxAttemptsByCause = {INSUFFICIENT_FUNDS:2, BANK_TIMEOUT:1, CARD_DECLINED:1, INVALID_CVV:0, EXPIRED_CARD:0, UNKNOWN:0};
+  const successRateByAction = {RETRY_IMMEDIATE:0.55, RETRY_AFTER_DELAY:0.65, NOTIFY_USER:0.30, NOTIFY_USER_CARD_UPDATE:0.25, ESCALATE:0};
+
+  let actionType = actionByCause[cause];
+  let maxAttempts = maxAttemptsByCause[cause];
+  let policyApproved = true;
+  let policyNote = "within bounds";
+  if(actionType.startsWith("RETRY") && amount < MIN_RETRY_AMOUNT){
+    actionType = "ESCALATE"; maxAttempts = 0; policyApproved = false;
+    policyNote = `retry rejected - amount below ₹${MIN_RETRY_AMOUNT} minimum retry threshold`;
+  }
+
+  // Simulate the same bounded attempt-loop execute.py runs for real:
+  // try up to maxAttempts times, stop the instant one succeeds.
+  const attempts = [];
+  let recovered = false;
+  for(let i=1; i<=maxAttempts; i++){
+    const succeeded = Math.random() < successRateByAction[actionType];
+    attempts.push({attempt: i, succeeded});
+    if(succeeded){ recovered = true; break; }
+  }
+  const reasoning = `Cause classified as ${cause} via ${source}; bounded to ${maxAttempts} attempt(s); policy ${policyNote}.`;
+
+  return {
+    id: "pay_" + (txnSeq++),
+    amount,
+    reason: cause,
+    reasonLabel: CAUSE_LABELS[cause],
+    source,
+    actionType,
+    action: ACTION_LABELS[actionType],
+    reasoning,
+    policy: policyApproved ? "Approved" : "Rejected",
+    outcome: recovered ? "recovered" : (actionType === "ESCALATE" ? "escalated" : "failed"),
+    time: nowClock(),
+    maxAttempts,
+    attemptsUsed: attempts.length,
+    attempts,
+    verifiedLive: false,
+    liveStatus: null,
+  };
+}
+
+/* ============================================================
+   Live-data loading — reads the real pipeline output.
+   Expects this file to be served from the project root (e.g.
+   `python -m http.server` run from the repo folder) so that
+   logs/audit_log.json resolves as a relative path. Opening the
+   file directly (file://) will fail this fetch due to browser
+   CORS rules — that's expected, and it falls back to demo data.
+   ============================================================ */
+let DATA_MODE = "demo";
+let transactions = [];
+let selectedTxnId = null;
+
+function transformAuditRecord(r){
+  const cause = r.cause || "UNKNOWN";
+  const actionType = r.action_type || "ESCALATE";
+  const source = r.source || (RULE_ONLY_CAUSES.includes(cause) ? "rule" : "llm");
+  const policyApproved = r.policy_approved !== false;
+  const outcome = r.recovered ? "recovered" : (actionType === "ESCALATE" ? "escalated" : "failed");
+  let time = "--:--";
+  if(r.timestamp){
+    const d = new Date(r.timestamp);
+    if(!isNaN(d)) time = `${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+  }
+  return {
+    id: r.payment_id || "UNKNOWN_ID",
+    amount: r.amount || 0,
+    reason: cause,
+    reasonLabel: CAUSE_LABELS[cause] || cause,
+    source,
+    actionType,
+    action: ACTION_LABELS[actionType] || actionType,
+    reasoning: r.reasoning || "",
+    policy: policyApproved ? "Approved" : "Rejected",
+    outcome,
+    time,
+    maxAttempts: r.max_attempts ?? 0,
+    attemptsUsed: r.attempts_used ?? 0,
+    attempts: Array.isArray(r.attempts) ? r.attempts : [],
+    verifiedLive: r.verified_live === true,
+    liveStatus: r.live_status || null,
+  };
+}
+
+async function loadRealData(){
+  try{
+    const res = await fetch('logs/audit_log.json', {cache:'no-store'});
+    if(!res.ok) throw new Error('not found');
+    const raw = await res.json();
+    if(!Array.isArray(raw) || raw.length === 0) throw new Error('empty');
+    transactions = raw.map(transformAuditRecord).reverse(); // most recent first
+    DATA_MODE = "live";
+  } catch(e){
+    DATA_MODE = "demo";
+    transactions = Array.from({length: 14}, () => makeTxn());
+  }
+  updateDataBadge();
+}
+
+function updateDataBadge(){
+  const badge = document.getElementById('dataSourceBadge');
+  if(DATA_MODE === 'live'){
+    badge.className = 'badge badge-live';
+    badge.innerHTML = `<span class="dot"></span> Live data · ${transactions.length} records`;
+  } else {
+    badge.className = 'badge badge-demo';
+    badge.innerHTML = `<span class="dot"></span> Demo data — run python app.py + refresh`;
+  }
+}
+
+/* ============================================================
+   Rendering
+   ============================================================ */
+function outcomeChip(outcome){
+  const map = {
+    recovered: `<span class="chip chip-outcome chip-success"><span class="dot"></span>Recovered</span>`,
+    pending: `<span class="chip chip-outcome chip-warning"><span class="dot"></span>Pending Retry</span>`,
+    failed: `<span class="chip chip-outcome chip-danger"><span class="dot"></span>Failed</span>`,
+    escalated: `<span class="chip chip-outcome chip-muted"><span class="dot"></span>Escalated</span>`,
+  };
+  return map[outcome] || "";
+}
+function sourceChip(source){
+  return source === "rule"
+    ? `<span class="chip chip-rule">Rule Engine</span>`
+    : `<span class="chip chip-llm">LLM Fallback</span>`;
+}
+
+function renderRecentDecisions(){
+  const body = document.getElementById('recentDecisionsBody');
+  const recent = transactions.slice(0, 6);
+  body.innerHTML = recent.map(t => `
+    <tr class="row-clickable ${t._new ? 'row-new' : ''}" onclick="openTransaction('${t.id}')">
+      <td><span class="txn-id">${t.id}</span></td>
+      <td><span class="amount">₹${fmtINR(t.amount)}</span></td>
+      <td>${sourceChip(t.source)}</td>
+      <td style="color:var(--text-muted); font-size:12.5px;">${t.action}</td>
+      <td>${outcomeChip(t.outcome)}</td>
+    </tr>
+  `).join('');
+}
+
+function renderTxnList(){
+  const list = document.getElementById('txnList');
+  document.getElementById('txnListCount').textContent = transactions.length + " total";
+  list.innerHTML = transactions.map(t => `
+    <div class="txn-list-item ${t.id === selectedTxnId ? 'selected' : ''}" onclick="openTransaction('${t.id}')">
+      <div class="txn-list-left">
+        <span class="txn-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10h18M7 15h2M13 15h4"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg></span>
+        <div>
+          <b>${t.id}</b>
+          <span>${t.reasonLabel}</span>
+        </div>
+      </div>
+      <div class="txn-list-mid">
+        <span class="col">${sourceChip(t.source)}</span>
+        <span class="col">${t.action}</span>
+        ${t.verifiedLive ? `<span class="col chip chip-success" style="font-size:11px;">Live Verified</span>` : ''}
+      </div>
+      <div class="txn-list-right">
+        <span class="amt">₹${fmtINR(t.amount)}</span>
+        ${outcomeChip(t.outcome)}
+        <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function pipelineHTML(t){
+  const ruleActive = t.source === "rule";
+  const rejected = t.policy === "Rejected";
+
+  function node(cls, iconSvg, label, sub){
+    return `<div class="pipe-node ${cls}">
+      <div class="pipe-line"></div>
+      <div class="pipe-circle">${iconSvg}</div>
+      <div class="pipe-label">${label}</div>
+      <div class="pipe-sub">${sub}</div>
+    </div>`;
+  }
+  const check = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>`;
+  const cross = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 6l12 12M18 6 6 18"/></svg>`;
+  const skip = cross;
+
+  const policyCls = rejected ? "rejected" : "done";
+  const policyIcon = rejected ? cross : check;
+
+  return `<div class="pipeline">
+    ${node("done", check, "Rule Engine", ruleActive ? "Matched known error code" : "No confident match")}
+    ${node(ruleActive ? "" : "done llm", ruleActive ? skip : check, "LLM Fallback", ruleActive ? "Not needed" : "Activated (Groq)")}
+    ${node(policyCls, policyIcon, "Policy Gate", t.policy)}
+    ${node(t.outcome === 'recovered' ? 'done' : (t.outcome === 'failed' ? '' : 'active'), check, "Outcome", t.outcome[0].toUpperCase()+t.outcome.slice(1))}
+  </div>`;
+}
+
+function openTransaction(id, opts={}){
+  const t = transactions.find(x => x.id === id);
+  if(!t) return;
+  selectedTxnId = id;
+
+  if(document.getElementById('view-transactions').classList.contains('active') === false){
+    switchView('transactions', {skipHistory:true});
+  }
+  renderTxnList();
+
+  const showReasoningBox = t.source === 'llm' || t.policy === 'Rejected';
+  const boxTag = t.source === 'llm' ? 'LLM Fallback' : 'Policy Gate';
+
+  document.getElementById('drawerHeader').innerHTML = `
+    <div>
+      <div class="detail-id">${t.id}</div>
+      <div class="detail-amt">₹${fmtINR(t.amount)}</div>
+    </div>
+    ${outcomeChip(t.outcome)}
+  `;
+
+  document.getElementById('drawerBody').innerHTML = `
+    ${pipelineHTML(t)}
+
+    <div class="kv-grid" style="margin-top:8px;">
+      <div class="kv"><div class="kv-label">Failure Cause</div><div class="kv-value mono">${t.reason}</div></div>
+      <div class="kv"><div class="kv-label">Decision Source</div><div class="kv-value">${t.source === 'rule' ? 'Rule Engine' : 'LLM Fallback (Groq)'}</div></div>
+      <div class="kv"><div class="kv-label">Recommended Action</div><div class="kv-value">${t.action}</div></div>
+      <div class="kv"><div class="kv-label">Policy Gate</div><div class="kv-value">${t.policy === 'Approved' ? '✅ Approved' : '⛔ Rejected'}</div></div>
+      <div class="kv"><div class="kv-label">Retry Attempts</div><div class="kv-value mono">${t.maxAttempts > 0 ? `${t.attemptsUsed} / ${t.maxAttempts} used` : 'Not retry-eligible'}</div></div>
+      <div class="kv"><div class="kv-label">Live Verification</div><div class="kv-value">${t.verifiedLive ? `✅ Confirmed via Razorpay (${t.liveStatus})` : '— Not a real test-account payment'}</div></div>
+      <div class="kv"><div class="kv-label">Detected At</div><div class="kv-value mono">${t.time}${DATA_MODE==='live' ? ' UTC' : ''}</div></div>
+      <div class="kv"><div class="kv-label">Data Source</div><div class="kv-value">${DATA_MODE === 'live' ? 'Real pipeline (audit_log.json)' : 'Demo sample'}</div></div>
+    </div>
+
+    ${t.attempts && t.attempts.length ? `
+    <div class="kv" style="margin-top:8px;">
+      <div class="kv-label">Attempt Trail</div>
+      <div class="kv-value" style="display:flex; gap:6px; flex-wrap:wrap; margin-top:4px;">
+        ${t.attempts.map(a => `
+          <span class="chip ${a.succeeded ? 'chip-success' : 'chip-danger'}" style="font-size:11.5px;">
+            Attempt ${a.attempt}: ${a.succeeded ? 'Succeeded' : 'Failed'}
+          </span>
+        `).join('')}
+      </div>
+    </div>` : ''}
+
+    ${showReasoningBox && t.reasoning ? `
+    <div class="reasoning-box">
+      <span class="tag">${boxTag} —</span> ${t.reasoning}
+    </div>` : ''}
+  `;
+
+  openDrawer(id, opts);
+}
+
+/* ---------- Drawer open/close (kept in sync with browser history) ---------- */
+const drawerEl = document.getElementById('detailDrawer');
+const drawerBackdrop = document.getElementById('drawerBackdrop');
+
+function openDrawer(id, opts={}){
+  drawerEl.classList.add('open');
+  drawerBackdrop.classList.add('open');
+  if(!opts.skipHistory){
+    history.pushState({view:'transactions', drawer:true, txnId:id}, '', '#transactions/' + id);
+  }
+}
+
+function closeDrawer(opts={}){
+  drawerEl.classList.remove('open');
+  drawerBackdrop.classList.remove('open');
+  selectedTxnId = null;
+  renderTxnList();
+  if(!opts.skipHistory){
+    // Only go back if the drawer is actually what's on top of the history stack.
+    if(history.state && history.state.drawer){ history.back(); }
+  }
+}
+
+document.getElementById('drawerClose').addEventListener('click', () => closeDrawer());
+drawerBackdrop.addEventListener('click', () => closeDrawer());
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape' && drawerEl.classList.contains('open')) closeDrawer();
+});
+
+function renderActivityLog(){
+  const log = document.getElementById('activityLog');
+  const items = transactions.slice(0,5).map(t => {
+    const color = t.source === 'rule' ? 'var(--brand)' : 'var(--llm)';
+    return `<div class="log-item">
+      <div class="log-time">${t.time}</div>
+      <div class="log-dot" style="background:${color}"></div>
+      <div class="log-text"><b>${t.id}</b> <span class="muted">diagnosed via</span> <b>${t.source === 'rule' ? 'Rule Engine' : 'LLM Fallback'}</b> <span class="muted">→ ${t.action.toLowerCase()}</span></div>
+    </div>`;
+  }).join('');
+  log.innerHTML = items;
+}
+
+function renderFailureCategories(){
+  // Full breakdown across every case, mirroring report.py's cases_by_cause
+  // (not just unresolved ones).
+  const counts = {};
+  transactions.forEach(t => counts[t.reasonLabel] = (counts[t.reasonLabel]||0)+1);
+  const max = Math.max(...Object.values(counts), 1);
+  const el = document.getElementById('failureCategories');
+  el.innerHTML = Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([label,count]) => `
+    <div class="bar-row">
+      <div class="bar-label">${label}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${(count/max*100).toFixed(0)}%"></div></div>
+      <div class="bar-value">${count}</div>
+    </div>
+  `).join('');
+}
+
+function renderOutcomes(){
+  const counts = {recovered:0, failed:0, escalated:0};
+  transactions.forEach(t => counts[t.outcome] = (counts[t.outcome]||0)+1);
+  const total = transactions.length || 1;
+  const colors = {recovered:'var(--success)', failed:'var(--danger)', escalated:'var(--text-faint)'};
+  const labels = {recovered:'Recovered', failed:'Failed', escalated:'Escalated'};
+  const el = document.getElementById('outcomesBreakdown');
+  el.innerHTML = Object.entries(counts).map(([k,v]) => `
+    <div class="bar-row">
+      <div class="bar-label">${labels[k]}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${(v/total*100).toFixed(0)}%; background:${colors[k]}"></div></div>
+      <div class="bar-value">${v}</div>
+    </div>
+  `).join('');
+}
+
+function renderExceptions(){
+  const exceptions = transactions.filter(t => t.outcome !== 'recovered');
+  const el = document.getElementById('exceptionsList');
+  if(exceptions.length === 0){
+    el.innerHTML = `<div class="empty-hint">No exceptions right now — every case was resolved automatically.</div>`;
+    return;
+  }
+  el.innerHTML = `<table><thead><tr><th>Transaction</th><th>Cause</th><th>Source</th><th>Status</th></tr></thead><tbody>
+    ${exceptions.slice(0,10).map(t => `
+      <tr class="row-clickable" onclick="openTransaction('${t.id}')">
+        <td><span class="txn-id">${t.id}</span></td>
+        <td style="font-size:12.5px;">${t.reasonLabel}</td>
+        <td>${sourceChip(t.source)}</td>
+        <td>${outcomeChip(t.outcome)}</td>
+      </tr>
+    `).join('')}
+  </tbody></table>`;
+}
+
+function renderSplit(){
+  const rule = transactions.filter(t=>t.source==='rule').length;
+  const llm = transactions.length - rule;
+  const total = transactions.length || 1;
+  const rulePct = Math.round(rule/total*100);
+  const llmPct = 100 - rulePct;
+  document.querySelector('.seg-rule').style.width = rulePct + '%';
+  document.querySelector('.seg-llm').style.width = llmPct + '%';
+  document.getElementById('split-rule-pct').textContent = rulePct + '%';
+  document.getElementById('split-llm-pct').textContent = llmPct + '%';
+
+  // donut on the Analytics page
+  const circ = 2 * Math.PI * 15.9; // ~100 in these units since r=15.9 on a 42-viewbox (matches Bootstrap-style donut math)
+  const ruleEl = document.getElementById('donutRule');
+  const llmEl = document.getElementById('donutLlm');
+  if(ruleEl && llmEl){
+    ruleEl.setAttribute('stroke-dasharray', `${rulePct} ${100-rulePct}`);
+    ruleEl.setAttribute('stroke-dashoffset', '25');
+    llmEl.setAttribute('stroke-dasharray', `${llmPct} ${100-llmPct}`);
+    llmEl.setAttribute('stroke-dashoffset', `${25 - rulePct}`);
+  }
+  const rp = document.getElementById('donutRulePct'); if(rp) rp.textContent = rulePct + '%';
+  const lp = document.getElementById('donutLlmPct'); if(lp) lp.textContent = llmPct + '%';
+}
+
+function renderMetrics(){
+  const recovered = transactions.filter(t=>t.outcome==='recovered');
+  const recoveredAmt = recovered.reduce((s,t)=>s+t.amount,0);
+  const totalAmt = transactions.reduce((s,t)=>s+t.amount,0);
+  const atRiskAmt = totalAmt - recoveredAmt;
+  const rate = (recovered.length / (transactions.length||1) * 100).toFixed(1);
+  document.getElementById('m-risk').textContent = fmtINR(atRiskAmt);
+  document.getElementById('m-recovered').textContent = fmtINR(recoveredAmt);
+  document.getElementById('m-rate').textContent = rate;
+  document.getElementById('m-processed').textContent = transactions.length;
+  document.getElementById('m-risk-delta').textContent = `${transactions.length} failed transactions processed`;
+}
+
+function renderAll(){
+  renderRecentDecisions();
+  renderTxnList();
+  renderActivityLog();
+  renderFailureCategories();
+  renderOutcomes();
+  renderExceptions();
+  renderSplit();
+  renderMetrics();
+  if(selectedTxnId) openTransaction(selectedTxnId, {skipHistory:true});
+}
+
+async function init(){
+  await loadRealData();
+  renderAll();
+}
+init();
+
+/* ============================================================
+   Navigation
+   ============================================================ */
+const TITLES = {
+  dashboard: ["Dashboard", "Live overview of recovery performance"],
+  transactions: ["Transactions", "Inspect individual recovery decisions"],
+  analytics: ["Analytics", "Recovery performance over time"],
+};
+function switchView(name, opts={}){
+  if(!TITLES[name]) name = 'dashboard';
+  document.querySelectorAll('.nav-item').forEach(b => b.classList.toggle('active', b.dataset.view === name));
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-' + name).classList.add('active');
+  document.getElementById('topbarTitle').textContent = TITLES[name][0];
+  document.getElementById('topbarSub').textContent = TITLES[name][1];
+  if(!opts.skipHistory){
+    history.pushState({view:name}, '', '#' + name);
+  }
+}
+document.querySelectorAll('.nav-item').forEach(btn => {
+  btn.addEventListener('click', () => { closeDrawer({skipHistory:true}); switchView(btn.dataset.view); });
+});
+document.querySelectorAll('[data-goto]').forEach(el => {
+  el.addEventListener('click', (e) => { e.preventDefault(); closeDrawer({skipHistory:true}); switchView(el.dataset.goto); });
+});
+
+/* ---------- Browser history / back-button support ----------
+   Every view switch and drawer open pushes a history entry, so the
+   browser's Back button steps backward through the app instead of
+   leaving it. This listener keeps the on-screen state in sync with
+   whichever entry the user navigates to. */
+window.addEventListener('popstate', (e) => {
+  const state = e.state || {view:'dashboard'};
+  if(state.drawer && state.txnId){
+    switchView(state.view || 'transactions', {skipHistory:true});
+    openTransaction(state.txnId, {skipHistory:true});
+  } else {
+    drawerEl.classList.remove('open');
+    drawerBackdrop.classList.remove('open');
+    selectedTxnId = null;
+    switchView(state.view || 'dashboard', {skipHistory:true});
+    renderTxnList();
+  }
+});
+// Establish the initial history entry so the very first Back press
+// has an app state to land on rather than exiting the page.
+history.replaceState({view:'dashboard'}, '', '#dashboard');
+
+/* ============================================================
+   Simulation
+   ============================================================ */
+const simBtn = document.getElementById('simBtn');
+let simRunning = false;
+
+function animateCounter(elId, from, to, suffix=''){
+  const el = document.getElementById(elId);
+  const steps = 20;
+  let step = 0;
+  const iv = setInterval(() => {
+    step++;
+    const val = Math.round(from + (to-from) * (step/steps));
+    el.textContent = fmtINR(val) + suffix;
+    if(step >= steps){ clearInterval(iv); el.textContent = fmtINR(to) + suffix; }
+  }, 25);
+}
+
+async function runSimulation(){
+  if(simRunning) return;
+  simRunning = true;
+  simBtn.disabled = true;
+  simBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 1s linear infinite;"><path d="M21 12a9 9 0 1 1-2.64-6.36"/></svg> Processing…`;
+
+  switchView('dashboard');
+  const batch = rnd(4,6);
+
+  for(let i=0;i<batch;i++){
+    await new Promise(r => setTimeout(r, 550));
+    const t = makeTxn();
+    t._new = true;
+    transactions.unshift(t);
+    if(transactions.length > 200) transactions.pop();
+    renderRecentDecisions();
+    renderActivityLog();
+    renderSplit();
+    renderMetrics();
+    renderFailureCategories();
+    renderOutcomes();
+  }
+
+  transactions.forEach(t => delete t._new);
+  renderTxnList();
+  renderExceptions();
+
+  simBtn.disabled = false;
+  simBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="6 3 20 12 6 21 6 3"/></svg> Run Recovery Simulation`;
+  simRunning = false;
+}
+simBtn.addEventListener('click', runSimulation);
+
+const refreshBtn = document.getElementById('refreshBtn');
+refreshBtn.addEventListener('click', async () => {
+  refreshBtn.classList.add('spinning');
+  refreshBtn.disabled = true;
+  selectedTxnId = null;
+  await loadRealData();
+  renderAll();
+  refreshBtn.classList.remove('spinning');
+  refreshBtn.disabled = false;
+});
+
+const styleSheet = document.createElement('style');
+styleSheet.textContent = `@keyframes spin{ to{ transform:rotate(360deg); } }`;
+document.head.appendChild(styleSheet);
+</script>
+</body>
+</html>

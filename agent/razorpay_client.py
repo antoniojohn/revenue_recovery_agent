@@ -58,3 +58,46 @@ def fetch_failed_payments(count: int = 100) -> list[dict]:
         })
 
     return failed
+
+
+def check_payment_status(payment_id: str):
+    """Fetch the current live status of a real payment from Razorpay.
+
+    Used by execute.py to make a genuine API round-trip against payments
+    that came from the real test account, rather than relying purely on
+    a simulated outcome. Returns None if no credentials are configured,
+    the payment isn't found, or the call fails for any reason - callers
+    should treat None as "could not verify" and fall back to the
+    simulated outcome instead.
+    """
+    client = _get_client()
+    if client is None or not payment_id:
+        return None
+
+    try:
+        payment = client.payment.fetch(payment_id)
+        return payment.get("status")
+    except Exception as e:
+        print(f"[razorpay_client] Could not verify live status for {payment_id}: {e}")
+        return None
+
+
+def attempt_retry(record: dict):
+    """Real API round-trip standing in for a retry attempt: creates a
+    fresh Razorpay order for the same amount, since test mode has no
+    direct 'retry this failed payment' endpoint. Returns the order dict
+    on success, or None if no credentials or the call fails."""
+    client = _get_client()
+    if client is None:
+        return None
+
+    try:
+        order = client.order.create({
+            "amount": record.get("amount", 0) * 100,
+            "currency": record.get("currency", "INR"),
+            "notes": {"retry_for_payment_id": record.get("payment_id", "")},
+        })
+        return order
+    except Exception as e:
+        print(f"[razorpay_client] Retry attempt failed for {record.get('payment_id')}: {e}")
+        return None

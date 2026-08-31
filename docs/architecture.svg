@@ -1,85 +1,116 @@
-<svg viewBox="0 0 900 960" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+<svg viewBox="0 0 900 1080" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#586174"/>
     </marker>
   </defs>
 
-  <rect width="900" height="960" fill="#ffffff"/>
+  <rect width="900" height="1080" fill="#ffffff"/>
 
-  <text x="450" y="45" text-anchor="middle" font-size="24" font-weight="700" fill="#0f172a">Revenue Recovery Agent — Architecture</text>
-  <text x="450" y="70" text-anchor="middle" font-size="13" fill="#64748b">Razorpay AI Buildathon 2026 — AI Revenue Recovery track</text>
+  <!-- Title -->
+  <text x="450" y="42" text-anchor="middle" font-size="26" font-weight="700" fill="#151b26">Revenue Recovery Agent — Architecture</text>
+  <text x="450" y="66" text-anchor="middle" font-size="13.5" fill="#8a93a6">Razorpay AI Buildathon 2026 — AI Revenue Recovery track</text>
 
-  <!-- Stage 1: Data sources -->
-  <rect x="80" y="100" width="330" height="70" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
-  <text x="245" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#1e40af">Razorpay Test Mode</text>
-  <text x="245" y="148" text-anchor="middle" font-size="12" fill="#3b5b8f">Real failed payments (razorpay_client.py)</text>
+  <!-- Row 1: inputs -->
+  <g>
+    <rect x="80" y="100" width="330" height="66" rx="10" fill="#eaf2fe" stroke="#5b8def" stroke-width="1.6"/>
+    <text x="245" y="127" text-anchor="middle" font-size="15" font-weight="700" fill="#1d4ed8">Razorpay Test Mode</text>
+    <text x="245" y="146" text-anchor="middle" font-size="12" fill="#3b567a">Real failed payments (razorpay_client.py)</text>
+  </g>
+  <g>
+    <rect x="490" y="100" width="330" height="66" rx="10" fill="#eaf2fe" stroke="#5b8def" stroke-width="1.6"/>
+    <text x="655" y="127" text-anchor="middle" font-size="15" font-weight="700" fill="#1d4ed8">Synthetic Batch</text>
+    <text x="655" y="146" text-anchor="middle" font-size="12" fill="#3b567a">generate_data.py — data/failed_payments.json</text>
+  </g>
 
-  <rect x="490" y="100" width="330" height="70" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
-  <text x="655" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#1e40af">Synthetic Batch</text>
-  <text x="655" y="148" text-anchor="middle" font-size="12" fill="#3b5b8f">generate_data.py — data/failed_payments.json</text>
+  <path d="M 245 166 L 245 190 L 450 190 L 450 210" fill="none" stroke="#586174" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M 655 166 L 655 190 L 450 190" fill="none" stroke="#586174" stroke-width="1.6"/>
 
-  <line x1="245" y1="170" x2="450" y2="215" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <line x1="655" y1="170" x2="450" y2="215" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- Payment Events -->
+  <g>
+    <rect x="230" y="212" width="440" height="66" rx="10" fill="#fef3d6" stroke="#e0a72e" stroke-width="1.6"/>
+    <text x="450" y="239" text-anchor="middle" font-size="15" font-weight="700" fill="#92610c">Payment Events / Failure Records</text>
+    <text x="450" y="258" text-anchor="middle" font-size="12" fill="#8a6a2f">error_code, amount, payment_id — deduped against prior runs</text>
+  </g>
+  <path d="M 450 278 L 450 300" fill="none" stroke="#586174" stroke-width="1.6" marker-end="url(#arrow)"/>
 
-  <!-- Stage 2: Diagnose -->
-  <rect x="230" y="215" width="440" height="60" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
-  <text x="450" y="240" text-anchor="middle" font-size="15" font-weight="700" fill="#92400e">Payment Events / Failure Records</text>
-  <text x="450" y="258" text-anchor="middle" font-size="12" fill="#92400e">error_code, amount, payment_id</text>
+  <!-- diagnose.py -->
+  <g>
+    <rect x="230" y="302" width="440" height="62" rx="10" fill="#eef1f6" stroke="#8a93a6" stroke-width="1.6"/>
+    <text x="450" y="328" text-anchor="middle" font-size="15" font-weight="700" fill="#151b26">diagnose.py</text>
+    <text x="450" y="346" text-anchor="middle" font-size="12" fill="#586174">Diagnosis Layer</text>
+  </g>
+  <path d="M 450 364 L 450 386" fill="none" stroke="#586174" stroke-width="1.6" marker-end="url(#arrow)"/>
 
-  <line x1="450" y1="275" x2="450" y2="315" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- Decision diamond: known error code? -->
+  <g>
+    <polygon points="450,388 540,428 450,468 360,428" fill="#ffffff" stroke="#586174" stroke-width="1.6"/>
+    <text x="450" y="424" text-anchor="middle" font-size="12" font-weight="700" fill="#151b26">Known error</text>
+    <text x="450" y="440" text-anchor="middle" font-size="12" font-weight="700" fill="#151b26">code?</text>
+  </g>
 
-  <rect x="230" y="315" width="440" height="60" rx="10" fill="#f1f5f9" stroke="#334155" stroke-width="1.5"/>
-  <text x="450" y="340" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">diagnose.py</text>
-  <text x="450" y="358" text-anchor="middle" font-size="12" fill="#475569">Diagnosis Layer</text>
+  <!-- Yes -> Rule Engine -->
+  <path d="M 360 428 L 315 428 L 315 460" fill="none" stroke="#586174" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="330" y="422" font-size="11.5" fill="#586174">yes</text>
+  <g>
+    <rect x="150" y="462" width="330" height="60" rx="10" fill="#e5f7ec" stroke="#3fae63" stroke-width="1.6"/>
+    <text x="315" y="487" text-anchor="middle" font-size="15" font-weight="700" fill="#1e7a41">Rule Engine</text>
+    <text x="315" y="505" text-anchor="middle" font-size="12" fill="#2f7a4c">Direct match — used first, always</text>
+  </g>
 
-  <line x1="330" y1="375" x2="330" y2="410" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <line x1="570" y1="375" x2="570" y2="410" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- No -> LLM Fallback -->
+  <path d="M 540 428 L 665 428 L 665 460" fill="none" stroke="#586174" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="600" y="422" font-size="11.5" fill="#586174">no</text>
+  <g>
+    <rect x="500" y="462" width="330" height="60" rx="10" fill="#fdecf2" stroke="#d84f83" stroke-width="1.6"/>
+    <text x="665" y="487" text-anchor="middle" font-size="15" font-weight="700" fill="#a3225a">LLM Fallback (Groq)</text>
+    <text x="665" y="505" text-anchor="middle" font-size="12" fill="#a3436c">Only called on a rule-map miss</text>
+  </g>
 
-  <!-- Stage 3: Rule Engine + LLM Fallback -->
-  <rect x="150" y="410" width="330" height="65" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
-  <text x="315" y="437" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">Rule Engine</text>
-  <text x="315" y="456" text-anchor="middle" font-size="12" fill="#166534">Fast-path match on known error codes</text>
+  <!-- converge to cause bucket -->
+  <path d="M 315 522 L 315 540 L 450 540 L 450 558" fill="none" stroke="#586174" stroke-width="1.6"/>
+  <path d="M 665 522 L 665 540 L 450 540" fill="none" stroke="#586174" stroke-width="1.6" marker-end="url(#arrow)"/>
 
-  <rect x="500" y="410" width="330" height="65" rx="10" fill="#fce7f3" stroke="#db2777" stroke-width="1.5"/>
-  <text x="665" y="437" text-anchor="middle" font-size="15" font-weight="700" fill="#831843">LLM Fallback (Groq)</text>
-  <text x="665" y="456" text-anchor="middle" font-size="12" fill="#9d174d">Ambiguous / free-text reasons</text>
+  <!-- Cause Bucket -->
+  <g>
+    <rect x="230" y="560" width="440" height="52" rx="10" fill="#eef1f6" stroke="#8a93a6" stroke-width="1.6"/>
+    <text x="450" y="591" text-anchor="middle" font-size="12.5" font-weight="700" fill="#151b26">Cause Bucket (e.g. INSUFFICIENT_FUNDS, EXPIRED_CARD)</text>
+  </g>
+  <path d="M 450 612 L 450 634" fill="none" stroke="#586174" stroke-width="1.6" marker-end="url(#arrow)"/>
 
-  <line x1="315" y1="475" x2="450" y2="510" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <line x1="665" y1="475" x2="450" y2="510" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- decide.py -->
+  <g>
+    <rect x="230" y="636" width="440" height="62" rx="10" fill="#eef1f6" stroke="#8a93a6" stroke-width="1.6"/>
+    <text x="450" y="662" text-anchor="middle" font-size="15" font-weight="700" fill="#151b26">decide.py</text>
+    <text x="450" y="680" text-anchor="middle" font-size="12" fill="#586174">Policy Gate — rejects retries below ₹150, bounds attempts</text>
+  </g>
+  <path d="M 450 698 L 450 720" fill="none" stroke="#586174" stroke-width="1.6" marker-end="url(#arrow)"/>
 
-  <!-- Cause bucket -->
-  <rect x="280" y="510" width="340" height="50" rx="10" fill="#f1f5f9" stroke="#334155" stroke-width="1.5"/>
-  <text x="450" y="540" text-anchor="middle" font-size="14" font-weight="600" fill="#0f172a">Cause Bucket (e.g. INSUFFICIENT_FUNDS, EXPIRED_CARD)</text>
+  <!-- execute.py with real attempt loop -->
+  <g>
+    <rect x="230" y="722" width="440" height="76" rx="10" fill="#eef1f6" stroke="#8a93a6" stroke-width="1.6"/>
+    <text x="450" y="748" text-anchor="middle" font-size="15" font-weight="700" fill="#151b26">execute.py</text>
+    <text x="450" y="766" text-anchor="middle" font-size="12" fill="#586174">Attempt 1 → 2 → STOP on success or cap — real verification</text>
+    <text x="450" y="782" text-anchor="middle" font-size="12" fill="#586174">for live Razorpay payments</text>
+  </g>
 
-  <line x1="450" y1="560" x2="450" y2="600" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- split to audit / report -->
+  <path d="M 350 798 L 350 814 L 285 814 L 285 832" fill="none" stroke="#586174" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M 550 798 L 550 814 L 625 814 L 625 832" fill="none" stroke="#586174" stroke-width="1.6" marker-end="url(#arrow)"/>
 
-  <!-- Stage 4: decide.py -->
-  <rect x="230" y="600" width="440" height="60" rx="10" fill="#f1f5f9" stroke="#334155" stroke-width="1.5"/>
-  <text x="450" y="625" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">decide.py</text>
-  <text x="450" y="643" text-anchor="middle" font-size="12" fill="#475569">Policy Gate — bounded, capped, explainable action</text>
+  <!-- Audit Trail / report.py -->
+  <g>
+    <rect x="120" y="834" width="330" height="66" rx="10" fill="#f2ecfb" stroke="#8e5fd6" stroke-width="1.6"/>
+    <text x="285" y="861" text-anchor="middle" font-size="15" font-weight="700" fill="#5b2d99">Audit Trail</text>
+    <text x="285" y="880" text-anchor="middle" font-size="11" fill="#6a4a91">logs/audit_log.json — decision + rationale + policy result</text>
+  </g>
+  <g>
+    <rect x="460" y="834" width="330" height="66" rx="10" fill="#f2ecfb" stroke="#8e5fd6" stroke-width="1.6"/>
+    <text x="625" y="861" text-anchor="middle" font-size="15" font-weight="700" fill="#5b2d99">report.py</text>
+    <text x="625" y="880" text-anchor="middle" font-size="12" fill="#6a4a91">recovered, recovery %, honest exception list</text>
+  </g>
 
-  <line x1="450" y1="660" x2="450" y2="695" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
-
-  <!-- Stage 5: execute.py -->
-  <rect x="230" y="695" width="440" height="60" rx="10" fill="#f1f5f9" stroke="#334155" stroke-width="1.5"/>
-  <text x="450" y="720" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">execute.py</text>
-  <text x="450" y="738" text-anchor="middle" font-size="12" fill="#475569">Recovery Action — retry / notify / escalate</text>
-
-  <line x1="450" y1="755" x2="450" y2="790" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
-
-  <!-- Stage 6: Audit + Report -->
-  <rect x="120" y="790" width="330" height="65" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
-  <text x="285" y="817" text-anchor="middle" font-size="15" font-weight="700" fill="#4c1d95">Audit Trail</text>
-  <text x="285" y="836" text-anchor="middle" font-size="12" fill="#5b21b6">logs/audit_log.json — every decision logged</text>
-
-  <rect x="460" y="790" width="330" height="65" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
-  <text x="625" y="817" text-anchor="middle" font-size="15" font-weight="700" fill="#4c1d95">report.py</text>
-  <text x="625" y="836" text-anchor="middle" font-size="12" fill="#5b21b6">₹ recovered, recovery %, honest exception list</text>
-
-  <line x1="450" y1="775" x2="285" y2="790" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <line x1="450" y1="775" x2="625" y2="790" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
-
-  <!-- Footer -->
-  <text x="450" y="920" text-anchor="middle" font-size="12" fill="#94a3b8">Every action is bounded (capped retries), explainable (reasoning logged), and auditable end-to-end.</text>
+  <!-- footer -->
+  <text x="450" y="960" text-anchor="middle" font-size="12.5" fill="#a3aab8">Every action is bounded, explainable, and auditable end-to-end.</text>
+  <text x="450" y="984" text-anchor="middle" font-size="11.5" fill="#a3aab8">Retry outcomes are simulated for this submission; live Razorpay records are additionally verified via a real API call.</text>
 </svg>

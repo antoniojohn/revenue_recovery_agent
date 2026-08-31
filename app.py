@@ -11,8 +11,8 @@ def run_pipeline(batch_path: str = "data/failed_payments.json"):
 
     results = []
     for record in batch:
-        cause = diagnose.classify(record)
-        action = decide.choose_action(cause, record)
+        cause, source = diagnose.classify(record)
+        action = decide.choose_action(cause, record, source)
         outcome = execute.run_action(action, record)
         results.append(outcome)
 
