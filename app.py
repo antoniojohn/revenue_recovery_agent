@@ -2,6 +2,8 @@
 Revenue Recovery Agent — entry point.
 Run with: python app.py
 """
+import warnings
+warnings.filterwarnings("ignore", category=RuntimeWarning, module="litellm")
 
 from agent import diagnose, decide, execute, report
 

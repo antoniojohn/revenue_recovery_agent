@@ -1,0 +1,58 @@
+version: "3.9"
+
+# One-command deployment: `docker compose up -d --build` starts the
+# webhook receiver, admin panel, and reconcile loop. Run the batch
+# pipeline itself explicitly and on-demand (it's a script, not a
+# server): `docker compose run --rm pipeline`.
+#
+# Required in .env (see README "Setup"): GROQ_API_KEY, RAZORPAY_KEY_ID,
+# RAZORPAY_KEY_SECRET, RAZORPAY_WEBHOOK_SECRET, ADMIN_USERNAME,
+# ADMIN_PASSWORD. Optional: SETTINGS_DB_PATH, RECONCILE_INTERVAL_SECONDS.
+
+services:
+  webhook:
+    build: .
+    command: gunicorn --bind 0.0.0.0:5000 --workers 2 agent.webhook_server:app
+    ports:
+      - "5000:5000"
+    env_file: .env
+    volumes:
+      - ./logs:/app/logs
+      - ./instance:/app/instance
+    restart: unless-stopped
+
+  admin:
+    build: .
+    command: gunicorn --bind 0.0.0.0:5001 --workers 1 agent.admin_panel:app
+    ports:
+      - "5001:5001"
+    env_file: .env
+    volumes:
+      - ./logs:/app/logs
+      - ./instance:/app/instance
+    restart: unless-stopped
+
+  reconcile:
+    build: .
+    command: python -m agent.reconcile_loop
+    env_file: .env
+    volumes:
+      - ./logs:/app/logs
+      - ./instance:/app/instance
+    restart: unless-stopped
+    depends_on:
+      - webhook
+
+  # Not a long-running server - the pipeline is a one-shot batch job,
+  # so it's given a profile that `docker compose up` skips by default.
+  # Invoke it explicitly: `docker compose run --rm pipeline`.
+  pipeline:
+    build: .
+    command: python app.py
+    env_file: .env
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+      - ./instance:/app/instance
+    profiles:
+      - manual

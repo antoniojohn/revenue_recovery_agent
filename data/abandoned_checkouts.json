@@ -1,0 +1,12 @@
+[
+  {"checkout_id": "chk_2001", "amount": 2499, "currency": "INR", "time_since_abandonment_hours": 0.5, "item_category": "electronics"},
+  {"checkout_id": "chk_2002", "amount": 899, "currency": "INR", "time_since_abandonment_hours": 4, "item_category": "apparel"},
+  {"checkout_id": "chk_2003", "amount": 15999, "currency": "INR", "time_since_abandonment_hours": 30, "item_category": "electronics"},
+  {"checkout_id": "chk_2004", "amount": 499, "currency": "INR", "time_since_abandonment_hours": 1.2, "item_category": "books"},
+  {"checkout_id": "chk_2005", "amount": 3299, "currency": "INR", "time_since_abandonment_hours": 12, "item_category": "home"},
+  {"checkout_id": "chk_2006", "amount": 7999, "currency": "INR", "time_since_abandonment_hours": 50, "item_category": "electronics"},
+  {"checkout_id": "chk_2007", "amount": 1299, "currency": "INR", "time_since_abandonment_hours": 0.2, "item_category": "apparel"},
+  {"checkout_id": "chk_2008", "amount": 5499, "currency": "INR", "time_since_abandonment_hours": 20, "item_category": "home"},
+  {"checkout_id": "chk_2009", "amount": 249, "currency": "INR", "time_since_abandonment_hours": 3, "item_category": "books"},
+  {"checkout_id": "chk_2010", "amount": 12499, "currency": "INR", "time_since_abandonment_hours": 72, "item_category": "electronics"}
+]

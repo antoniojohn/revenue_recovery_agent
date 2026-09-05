@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head><title>Retry Payment Test 2</title></head>
+<body>
+  <h2>Completing retry for order_TYKrE3VTHLPXge (Rs 499)</h2>
+  <button id="pay-btn">Pay Now</button>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    document.getElementById("pay-btn").onclick = function () {
+      var options = {
+        "key": "rzp_test_TXre5uecV6NCc0",
+        "amount": "49900",
+        "currency": "INR",
+        "name": "Revenue Recovery Agent - Test 2",
+        "description": "Retry for pay_TWHXni4ry4poSw",
+        "order_id": "order_TYKrE3VTHLPXge",
+        "handler": function (response) {
+          alert("Payment completed! Payment ID: " + response.razorpay_payment_id);
+        },
+        "prefill": { "email": "antoniojohnofficial@gmail.com" },
+        "theme": { "color": "#3399cc" }
+      };
+      var rzp = new Razorpay(options);
+      rzp.open();
+    };
+  </script>
+</body>
+</html>

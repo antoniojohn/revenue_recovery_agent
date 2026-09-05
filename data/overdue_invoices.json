@@ -1,0 +1,12 @@
+[
+  {"invoice_id": "inv_1001", "amount": 45000, "currency": "INR", "days_overdue": 3, "customer_id": "cust_b2b_01"},
+  {"invoice_id": "inv_1002", "amount": 128000, "currency": "INR", "days_overdue": 15, "customer_id": "cust_b2b_02"},
+  {"invoice_id": "inv_1003", "amount": 9500, "currency": "INR", "days_overdue": 45, "customer_id": "cust_b2b_03"},
+  {"invoice_id": "inv_1004", "amount": 62000, "currency": "INR", "days_overdue": 1, "customer_id": "cust_b2b_04"},
+  {"invoice_id": "inv_1005", "amount": 210000, "currency": "INR", "days_overdue": 60, "customer_id": "cust_b2b_05"},
+  {"invoice_id": "inv_1006", "amount": 33000, "currency": "INR", "days_overdue": 9, "customer_id": "cust_b2b_06"},
+  {"invoice_id": "inv_1007", "amount": 5000, "currency": "INR", "days_overdue": 90, "customer_id": "cust_b2b_07"},
+  {"invoice_id": "inv_1008", "amount": 77000, "currency": "INR", "days_overdue": 22, "customer_id": "cust_b2b_08"},
+  {"invoice_id": "inv_1009", "amount": 14000, "currency": "INR", "days_overdue": 6, "customer_id": "cust_b2b_09"},
+  {"invoice_id": "inv_1010", "amount": 99000, "currency": "INR", "days_overdue": 35, "customer_id": "cust_b2b_10"}
+]

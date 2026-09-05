@@ -13,9 +13,30 @@ crashes the batch.
 import os
 
 from dotenv import load_dotenv
+from requests.adapters import HTTPAdapter
 import razorpay
 
 load_dotenv()
+
+# Default timeout (seconds) for every Razorpay API call. Without this,
+# a hung connection blocks indefinitely instead of degrading gracefully
+# like every other failure mode in this file already does.
+DEFAULT_TIMEOUT_SECONDS = 15
+
+
+class _TimeoutHTTPAdapter(HTTPAdapter):
+    """A requests HTTPAdapter that applies a default timeout to every
+    request unless the caller explicitly overrides it. The Razorpay SDK
+    does not expose a timeout parameter directly, so this is applied at
+    the underlying requests.Session level instead."""
+
+    def __init__(self, *args, timeout=DEFAULT_TIMEOUT_SECONDS, **kwargs):
+        self._timeout = timeout
+        super().__init__(*args, **kwargs)
+
+    def send(self, request, **kwargs):
+        kwargs.setdefault("timeout", self._timeout)
+        return super().send(request, **kwargs)
 
 
 def _get_client():
@@ -23,7 +44,11 @@ def _get_client():
     key_secret = os.getenv("RAZORPAY_KEY_SECRET")
     if not key_id or not key_secret or "your_test" in key_id:
         return None
-    return razorpay.Client(auth=(key_id, key_secret))
+    client = razorpay.Client(auth=(key_id, key_secret))
+    adapter = _TimeoutHTTPAdapter()
+    client.session.mount("https://", adapter)
+    client.session.mount("http://", adapter)
+    return client
 
 
 def fetch_failed_payments(count: int = 100) -> list[dict]:
@@ -49,7 +74,7 @@ def fetch_failed_payments(count: int = 100) -> list[dict]:
             continue
         failed.append({
             "payment_id": p.get("id"),
-            "amount": (p.get("amount") or 0) // 100,  # paise -> rupees
+            "amount": round((p.get("amount") or 0) / 100, 2),  # paise -> rupees, no precision loss
             "currency": p.get("currency", "INR"),
             "error_code": (p.get("error_code") or "unknown_error").lower(),
             "error_description": p.get("error_description", ""),
@@ -62,14 +87,8 @@ def fetch_failed_payments(count: int = 100) -> list[dict]:
 
 def check_payment_status(payment_id: str):
     """Fetch the current live status of a real payment from Razorpay.
-
-    Used by execute.py to make a genuine API round-trip against payments
-    that came from the real test account, rather than relying purely on
-    a simulated outcome. Returns None if no credentials are configured,
-    the payment isn't found, or the call fails for any reason - callers
-    should treat None as "could not verify" and fall back to the
-    simulated outcome instead.
-    """
+    Returns None if no credentials are configured, the payment isn't
+    found, or the call fails for any reason."""
     client = _get_client()
     if client is None or not payment_id:
         return None
@@ -79,6 +98,22 @@ def check_payment_status(payment_id: str):
         return payment.get("status")
     except Exception as e:
         print(f"[razorpay_client] Could not verify live status for {payment_id}: {e}")
+        return None
+
+
+def check_order_status(order_id: str):
+    """Fetch the current status of a retry order ('created', 'attempted',
+    or 'paid'). Returns None if no credentials are configured, the order
+    isn't found, or the call fails."""
+    client = _get_client()
+    if client is None or not order_id:
+        return None
+
+    try:
+        order = client.order.fetch(order_id)
+        return order.get("status")
+    except Exception as e:
+        print(f"[razorpay_client] Could not fetch order status for {order_id}: {e}")
         return None
 
 
@@ -93,7 +128,13 @@ def attempt_retry(record: dict):
 
     try:
         order = client.order.create({
-            "amount": record.get("amount", 0) * 100,
+            # round() before sending: record["amount"] is rupees as a
+            # float, and Razorpay's API requires amount as an integer
+            # number of paise. Without rounding first, floating point
+            # imprecision (e.g. 99.5 * 100 == 9950.000000000001) can
+            # produce a non-integer amount the API may reject or
+            # silently mishandle.
+            "amount": round(record.get("amount", 0) * 100),
             "currency": record.get("currency", "INR"),
             "notes": {"retry_for_payment_id": record.get("payment_id", "")},
         })
