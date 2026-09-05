@@ -224,6 +224,29 @@ def summarize(results: list[dict]) -> dict:
     return summary
 
 
+def summarize_full_audit_log(path: str = "logs/audit_log.json") -> dict:
+    """
+    Load the FULL accumulated audit log (every run, ever appended by
+    execute.py) and summarize it exactly like summarize() does for a
+    single batch's results.
+
+    Why this exists: run_pipeline() in app.py only ever passes THIS
+    run's newly-processed `results` to summarize() - which is often an
+    empty list, since diagnose.load_batch() skips any payment_id
+    already present in the audit log. That means the terminal report
+    can print all-zeros even when logs/audit_log.json (and therefore
+    the RecoverX dashboard, which reads that same file directly) has
+    dozens of accumulated records. This function reads the same file
+    the dashboard reads, so the two are guaranteed to agree.
+    """
+    try:
+        with open(path) as f:
+            log = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        log = []
+    return summarize(log)
+
+
 def _print_summary(summary: dict) -> None:
     print("\n=== Revenue Recovery Report ===")
     print(f"Total failed payments processed: {summary['total_cases']}")

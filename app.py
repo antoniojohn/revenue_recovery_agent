@@ -18,7 +18,12 @@ def run_pipeline(batch_path: str = "data/failed_payments.json"):
         outcome = execute.run_action(action, record)
         results.append(outcome)
 
-    report.summarize(results)
+    if results:
+        print("=== This run ===")
+        report.summarize(results)
+
+    print("=== All-time (same data the dashboard reads) ===")
+    report.summarize_full_audit_log()
 
 
 if __name__ == "__main__":

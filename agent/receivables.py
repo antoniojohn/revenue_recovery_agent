@@ -21,6 +21,7 @@ Run: python -m agent.receivables
 import json
 import os
 import random
+random.seed(42)
 from datetime import datetime, timezone
 
 from filelock import FileLock

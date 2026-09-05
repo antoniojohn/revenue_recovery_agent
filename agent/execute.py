@@ -30,6 +30,7 @@ as a third bucket, not fold it into recovered or exception.
 import json
 import os
 import random
+random.seed(42)
 from datetime import datetime, timedelta, timezone
 
 from filelock import FileLock

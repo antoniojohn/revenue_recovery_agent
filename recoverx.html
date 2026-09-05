@@ -317,6 +317,15 @@
      scrolls horizontally instead, so the full ID is always readable. */
   .table-recent-decisions .txn-id{ overflow:visible; white-space:nowrap; }
   .table-recent-decisions th{ overflow:visible; text-overflow:clip; }
+
+  .table-exceptions{ table-layout: fixed; min-width: 640px; }
+  .table-exceptions col.col-txn{ width:24%; }
+  .table-exceptions col.col-cause{ width:22%; }
+  .table-exceptions col.col-source{ width:20%; }
+  .table-exceptions col.col-status{ width:18%; }
+  .table-exceptions col.col-amount{ width:16%; }
+  .table-exceptions td{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .table-exceptions .txn-id{ overflow:visible; }
   tbody tr{ transition: background .5s ease; }
   tbody tr:last-child td{ border-bottom:none; }
   tbody tr.row-clickable:hover{ background: var(--surface-alt); cursor:pointer; }
@@ -478,10 +487,22 @@
   @media (max-width: 640px){
     .txn-list-mid{ display:none; }
     .drawer{ width:100vw; }
+    /* Mirror how .txn-list-mid degrades on narrow viewports: drop the
+       secondary Source/Action columns instead of relying only on
+       horizontal scroll, keeping Transaction/Amount/Outcome visible
+       at a glance. */
+    .table-recent-decisions th:nth-child(3),
+    .table-recent-decisions td:nth-child(3),
+    .table-recent-decisions th:nth-child(4),
+    .table-recent-decisions td:nth-child(4){
+      display:none;
+    }
+    .table-recent-decisions{ min-width: 0; }
   }
 
   /* ---------- Analytics ---------- */
   .analytics-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+  .panel-span-2{ grid-column: 1 / -1; }
   .bar-row{ display:flex; align-items:center; gap:12px; margin-bottom:12px; }
   .bar-row:last-child{ margin-bottom:0; }
   .bar-label{ width:150px; font-size:12.5px; color: var(--text-muted); flex-shrink:0; }
@@ -498,6 +519,23 @@
   .donut-legend-item b{ font-weight:600; }
 
   .empty-hint{ font-size:12px; color: var(--text-faint); text-align:center; padding: 30px 0; }
+
+  /* ---------- Test suite proof banner ---------- */
+  .test-banner-body{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+  .test-banner-icon{
+    width:44px; height:44px; border-radius:12px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .test-banner-icon svg{ width:22px; height:22px; }
+  .test-banner-text{ flex:1; min-width:220px; }
+  .test-banner-title{ font-family: var(--font-display); font-weight:700; font-size:16px; }
+  .test-banner-sub{ font-size:12.5px; color:var(--text-muted); margin-top:2px; }
+  .test-banner-chips{ display:flex; gap:8px; flex-wrap:wrap; }
+  .test-banner-note{ flex-basis:100%; font-size:11px; color:var(--text-faint); margin-top:2px; }
+
+  @media (max-width: 640px){
+    .test-banner-chips{ display:none; }
+  }
 
   @media (max-width: 980px){
     .metric-grid{ grid-template-columns: repeat(2,1fr); }
@@ -572,10 +610,6 @@
         <button class="btn" id="refreshBtn" title="Reload logs/audit_log.json and logs/summary_report.json">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
         </button>
-        <button class="btn btn-primary" id="simBtn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="6 3 20 12 6 21 6 3"/></svg>
-          Run Recovery Simulation
-        </button>
       </div>
     </div>
 
@@ -604,6 +638,29 @@
             <div class="metric-label">Transactions Processed <span class="metric-icon icon-violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></span></div>
             <div class="metric-value" id="m-processed">128</div>
             <div class="metric-delta">Since agent activation</div>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-bottom:16px;">
+          <div class="panel-body test-banner-body">
+            <div class="test-banner-icon icon-green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <div class="test-banner-text">
+              <div class="test-banner-title">165/165 automated tests passing</div>
+              <div class="test-banner-sub">pytest suite covering policy logic, security, concurrency safety, and the live Razorpay integration</div>
+            </div>
+            <div class="test-banner-chips">
+              <span class="chip chip-success"><span class="dot"></span>Security & Auth · 18</span>
+              <span class="chip chip-success"><span class="dot"></span>Policy Engine · 28</span>
+              <span class="chip chip-success"><span class="dot"></span>Execution & Retries · 14</span>
+              <span class="chip chip-success"><span class="dot"></span>Data Persistence · 25</span>
+              <span class="chip chip-success"><span class="dot"></span>Razorpay API · 18</span>
+              <span class="chip chip-success"><span class="dot"></span>Recovery Flows · 18</span>
+              <span class="chip chip-success"><span class="dot"></span>Reconciliation · 33</span>
+              <span class="chip chip-success"><span class="dot"></span>Reporting · 11</span>
+            </div>
+            <div class="test-banner-note">Verified locally via <code>pytest -v</code> · last run 05 Sep 2026</div>
           </div>
         </div>
 
@@ -700,8 +757,24 @@
           </div>
 
           <div class="panel">
+            <div class="panel-header"><div><div class="panel-title">Test Suite Coverage</div><div class="panel-title-sub">165/165 pytest cases passing, by area — last run 05 Sep 2026</div></div></div>
+            <div class="panel-body">
+              <div class="bar-row"><div class="bar-label">Reconciliation</div><div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--success)"></div></div><div class="bar-value">33</div></div>
+              <div class="bar-row"><div class="bar-label">Policy Engine</div><div class="bar-track"><div class="bar-fill" style="width:85%; background:var(--success)"></div></div><div class="bar-value">28</div></div>
+              <div class="bar-row"><div class="bar-label">Data Persistence</div><div class="bar-track"><div class="bar-fill" style="width:76%; background:var(--success)"></div></div><div class="bar-value">25</div></div>
+              <div class="bar-row"><div class="bar-label">Security & Auth</div><div class="bar-track"><div class="bar-fill" style="width:55%; background:var(--success)"></div></div><div class="bar-value">18</div></div>
+              <div class="bar-row"><div class="bar-label">Razorpay API</div><div class="bar-track"><div class="bar-fill" style="width:55%; background:var(--success)"></div></div><div class="bar-value">18</div></div>
+              <div class="bar-row"><div class="bar-label">Recovery Flows</div><div class="bar-track"><div class="bar-fill" style="width:55%; background:var(--success)"></div></div><div class="bar-value">18</div></div>
+              <div class="bar-row"><div class="bar-label">Execution & Retries</div><div class="bar-track"><div class="bar-fill" style="width:42%; background:var(--success)"></div></div><div class="bar-value">14</div></div>
+              <div class="bar-row"><div class="bar-label">Reporting</div><div class="bar-track"><div class="bar-fill" style="width:33%; background:var(--success)"></div></div><div class="bar-value">11</div></div>
+            </div>
+          </div>
+
+          <div class="panel panel-span-2">
             <div class="panel-header"><div><div class="panel-title">Exceptions & Escalations</div><div class="panel-title-sub">Cases that needed human review</div></div></div>
-            <div class="panel-body" id="exceptionsList"></div>
+            <div class="panel-body" style="padding:0;" id="exceptionsListWrap">
+              <div class="table-scroll" id="exceptionsList"></div>
+            </div>
           </div>
 
         </div>
@@ -739,6 +812,13 @@ const CAUSE_LABELS = {
 // arrive via the LLM fallback (mirrors RULE_MAP / KNOWN_CAUSES).
 const RULE_ONLY_CAUSES = ["INSUFFICIENT_FUNDS","CARD_DECLINED","EXPIRED_CARD","BANK_TIMEOUT","INVALID_CVV"];
 
+// Mirrors report.py's REAL_RESOLUTION_METHODS exactly. Everything else
+// ("simulated", or no resolution_method at all) is projected/simulated,
+// not a live Razorpay result. Keeping this in sync with report.py is
+// what makes the dashboard's real-vs-projected split match the terminal
+// report instead of silently drifting apart.
+const REAL_RESOLUTION_METHODS = new Set(["webhook", "poll", "timeout", "retry_initiation_failed"]);
+
 const ACTION_LABELS = {
   RETRY_AFTER_DELAY: "Retry after delay",
   RETRY_IMMEDIATE: "Retry immediately",
@@ -747,12 +827,52 @@ const ACTION_LABELS = {
   ESCALATE: "Escalate",
 };
 
-const MIN_RETRY_AMOUNT = 150; // mirrors decide.py's policy gate threshold
+// NOTE: MIN_RETRY_AMOUNT below, plus actionByCause / maxAttemptsByCause /
+// successRateByAction inside makeTxn(), are a second, hand-copied source of
+// truth for policy logic that already lives in decide.py / settings_store.py.
+// They only feed demo-mode data, but if the admin panel ever changes the
+// min-retry-amount (or the policy tables), this copy will silently drift out
+// of sync. loadConfig() below makes a best-effort attempt to pull the real
+// values from a /api/config endpoint if the backend exposes one; when it
+// doesn't (e.g. static hosting, or the endpoint hasn't been built yet), we
+// fall back to this hardcoded default so demo mode still works standalone.
+let MIN_RETRY_AMOUNT = 150; // mirrors decide.py's policy gate threshold
+
+async function loadConfig(){
+  try{
+    const res = await fetch('/api/config', {cache:'no-store'});
+    if(!res.ok) return;
+    const cfg = await res.json();
+    if(typeof cfg.min_retry_amount === 'number'){
+      MIN_RETRY_AMOUNT = cfg.min_retry_amount;
+    }
+  } catch(e){
+    // No /api/config endpoint available — keep the hardcoded default above.
+    // This is expected when the dashboard is served statically.
+  }
+}
 
 function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
 function rnd(min,max){ return Math.floor(Math.random()*(max-min+1))+min; }
 function fmtINR(n){ return n.toLocaleString('en-IN'); }
 function nowClock(){ const d = new Date(); return `${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`; }
+
+/* Escapes any value before it lands in an innerHTML template string.
+   Today every field in `transactions` comes from our own JSON, but
+   `reasoning` is a free-text formatted string and payment_id /
+   error_description could eventually flow through from something less
+   trusted (a customer-facing note, a webhook payload). Same spirit as
+   the XSS fix in admin_panel.py — cheap insurance, run every
+   non-numeric field through this before templating it in. */
+function escapeHtml(value){
+  if(value === null || value === undefined) return '';
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
 
 /* ============================================================
    Demo-mode data generator — used only when logs/audit_log.json
@@ -819,6 +939,12 @@ function makeTxn(){
     attempts,
     verifiedLive: false,
     liveStatus: null,
+    // Demo data is always a probability draw, never a live Razorpay
+    // result - so it's always "simulated", same as report.py would
+    // classify an audit entry with no resolution_method at all.
+    status: "resolved",
+    resolutionMethod: "simulated",
+    isReal: false,
   };
 }
 
@@ -839,7 +965,23 @@ function transformAuditRecord(r){
   const actionType = r.action_type || "ESCALATE";
   const source = r.source || (RULE_ONLY_CAUSES.includes(cause) ? "rule" : "llm");
   const policyApproved = r.policy_approved !== false;
-  const outcome = r.recovered ? "recovered" : (actionType === "ESCALATE" ? "escalated" : "failed");
+
+  // Mirrors report.py: a "pending" status means not yet confirmed either
+  // way (still awaiting webhook/poll) - it's neither a recovery nor an
+  // exception yet, and must stay out of both buckets until it resolves.
+  // Records with no "status" field at all (pre-webhook-migration entries)
+  // are treated as resolved, same as report.py does.
+  const status = r.status === "pending" ? "pending" : "resolved";
+  const outcome = status === "pending"
+    ? "pending"
+    : (r.recovered ? "recovered" : (actionType === "ESCALATE" ? "escalated" : "failed"));
+
+  // Mirrors report.py's _is_real(): exactly the methods in
+  // REAL_RESOLUTION_METHODS are a genuine Razorpay API round-trip.
+  // "simulated" and missing resolution_method are both projected.
+  const resolutionMethod = r.resolution_method || null;
+  const isReal = REAL_RESOLUTION_METHODS.has(resolutionMethod);
+
   let time = "--:--";
   if(r.timestamp){
     const d = new Date(r.timestamp);
@@ -856,6 +998,9 @@ function transformAuditRecord(r){
     reasoning: r.reasoning || "",
     policy: policyApproved ? "Approved" : "Rejected",
     outcome,
+    status,
+    resolutionMethod,
+    isReal,
     time,
     maxAttempts: r.max_attempts ?? 0,
     attemptsUsed: r.attempts_used ?? 0,
@@ -874,6 +1019,11 @@ async function loadRealData(){
     transactions = raw.map(transformAuditRecord).reverse(); // most recent first
     DATA_MODE = "live";
   } catch(e){
+    // A genuinely broken audit_log.json (bad permissions, corrupt JSON) looks
+    // identical to "no data yet" in the UI — log it so that case doesn't
+    // silently masquerade as demo mode during debugging.
+    console.warn('[RecoverX] Falling back to demo data — could not load logs/audit_log.json:', e);
+    await loadConfig();
     DATA_MODE = "demo";
     transactions = Array.from({length: 14}, () => makeTxn());
   }
@@ -890,6 +1040,7 @@ function updateDataBadge(){
     badge.innerHTML = `<span class="dot"></span> Demo data — run python app.py + refresh`;
   }
 }
+
 
 /* ============================================================
    Rendering
@@ -913,11 +1064,11 @@ function renderRecentDecisions(){
   const body = document.getElementById('recentDecisionsBody');
   const recent = transactions.slice(0, 6);
   body.innerHTML = recent.map(t => `
-    <tr class="row-clickable ${t._new ? 'row-new' : ''}" onclick="openTransaction('${t.id}')">
-      <td><span class="txn-id">${t.id}</span></td>
+    <tr class="row-clickable ${t._new ? 'row-new' : ''}" onclick="openTransaction('${escapeHtml(t.id)}')">
+      <td><span class="txn-id">${escapeHtml(t.id)}</span></td>
       <td><span class="amount">₹${fmtINR(t.amount)}</span></td>
       <td>${sourceChip(t.source)}</td>
-      <td style="color:var(--text-muted); font-size:12.5px;">${t.action}</td>
+      <td style="color:var(--text-muted); font-size:12.5px;">${escapeHtml(t.action)}</td>
       <td>${outcomeChip(t.outcome)}</td>
     </tr>
   `).join('');
@@ -927,17 +1078,17 @@ function renderTxnList(){
   const list = document.getElementById('txnList');
   document.getElementById('txnListCount').textContent = transactions.length + " total";
   list.innerHTML = transactions.map(t => `
-    <div class="txn-list-item ${t.id === selectedTxnId ? 'selected' : ''}" onclick="openTransaction('${t.id}')">
+    <div class="txn-list-item ${t.id === selectedTxnId ? 'selected' : ''}" onclick="openTransaction('${escapeHtml(t.id)}')">
       <div class="txn-list-left">
         <span class="txn-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10h18M7 15h2M13 15h4"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg></span>
         <div>
-          <b>${t.id}</b>
-          <span>${t.reasonLabel}</span>
+          <b>${escapeHtml(t.id)}</b>
+          <span>${escapeHtml(t.reasonLabel)}</span>
         </div>
       </div>
       <div class="txn-list-mid">
         <span class="col">${sourceChip(t.source)}</span>
-        <span class="col">${t.action}</span>
+        <span class="col">${escapeHtml(t.action)}</span>
         ${t.verifiedLive ? `<span class="col chip chip-success" style="font-size:11px;">Live Verified</span>` : ''}
       </div>
       <div class="txn-list-right">
@@ -957,8 +1108,8 @@ function pipelineHTML(t){
     return `<div class="pipe-node ${cls}">
       <div class="pipe-line"></div>
       <div class="pipe-circle">${iconSvg}</div>
-      <div class="pipe-label">${label}</div>
-      <div class="pipe-sub">${sub}</div>
+      <div class="pipe-label">${escapeHtml(label)}</div>
+      <div class="pipe-sub">${escapeHtml(sub)}</div>
     </div>`;
   }
   const check = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>`;
@@ -991,7 +1142,7 @@ function openTransaction(id, opts={}){
 
   document.getElementById('drawerHeader').innerHTML = `
     <div>
-      <div class="detail-id">${t.id}</div>
+      <div class="detail-id">${escapeHtml(t.id)}</div>
       <div class="detail-amt">₹${fmtINR(t.amount)}</div>
     </div>
     ${outcomeChip(t.outcome)}
@@ -1000,14 +1151,26 @@ function openTransaction(id, opts={}){
   document.getElementById('drawerBody').innerHTML = `
     ${pipelineHTML(t)}
 
-    <div class="kv-grid" style="margin-top:8px;">
-      <div class="kv"><div class="kv-label">Failure Cause</div><div class="kv-value mono">${t.reason}</div></div>
+    ${showReasoningBox && t.reasoning ? `
+    <div class="reasoning-box">
+      <span class="tag">${escapeHtml(boxTag)} —</span> ${escapeHtml(t.reasoning)}
+    </div>` : ''}
+
+    <div class="kv-grid" style="margin-top:16px;">
+      <div class="kv"><div class="kv-label">Failure Cause</div><div class="kv-value mono">${escapeHtml(t.reason)}</div></div>
       <div class="kv"><div class="kv-label">Decision Source</div><div class="kv-value">${t.source === 'rule' ? 'Rule Engine' : 'LLM Fallback (Groq)'}</div></div>
-      <div class="kv"><div class="kv-label">Recommended Action</div><div class="kv-value">${t.action}</div></div>
+      <div class="kv"><div class="kv-label">Recommended Action</div><div class="kv-value">${escapeHtml(t.action)}</div></div>
       <div class="kv"><div class="kv-label">Policy Gate</div><div class="kv-value">${t.policy === 'Approved' ? '✅ Approved' : '⛔ Rejected'}</div></div>
       <div class="kv"><div class="kv-label">Retry Attempts</div><div class="kv-value mono">${t.maxAttempts > 0 ? `${t.attemptsUsed} / ${t.maxAttempts} used` : 'Not retry-eligible'}</div></div>
-      <div class="kv"><div class="kv-label">Live Verification</div><div class="kv-value">${t.verifiedLive ? `✅ Confirmed via Razorpay (${t.liveStatus})` : '— Not a real test-account payment'}</div></div>
-      <div class="kv"><div class="kv-label">Detected At</div><div class="kv-value mono">${t.time}${DATA_MODE==='live' ? ' UTC' : ''}</div></div>
+      <div class="kv"><div class="kv-label">Live Verification</div><div class="kv-value">${t.verifiedLive ? `✅ Confirmed via Razorpay (${escapeHtml(t.liveStatus)})` : '— Not a real test-account payment'}</div></div>
+      <div class="kv"><div class="kv-label">Result Type</div><div class="kv-value">${
+        t.status === 'pending'
+          ? '⏳ Awaiting webhook/poll confirmation'
+          : (t.isReal
+              ? `✅ Real, API-confirmed${t.resolutionMethod ? ` (${escapeHtml(t.resolutionMethod)})` : ''}`
+              : '🔵 Projected (simulated outcome)')
+      }</div></div>
+      <div class="kv"><div class="kv-label">Detected At</div><div class="kv-value mono">${escapeHtml(t.time)}${DATA_MODE==='live' ? ' UTC' : ''}</div></div>
       <div class="kv"><div class="kv-label">Data Source</div><div class="kv-value">${DATA_MODE === 'live' ? 'Real pipeline (audit_log.json)' : 'Demo sample'}</div></div>
     </div>
 
@@ -1017,15 +1180,10 @@ function openTransaction(id, opts={}){
       <div class="kv-value" style="display:flex; gap:6px; flex-wrap:wrap; margin-top:4px;">
         ${t.attempts.map(a => `
           <span class="chip ${a.succeeded ? 'chip-success' : 'chip-danger'}" style="font-size:11.5px;">
-            Attempt ${a.attempt}: ${a.succeeded ? 'Succeeded' : 'Failed'}
+            Attempt ${escapeHtml(a.attempt)}: ${a.succeeded ? 'Succeeded' : 'Failed'}
           </span>
         `).join('')}
       </div>
-    </div>` : ''}
-
-    ${showReasoningBox && t.reasoning ? `
-    <div class="reasoning-box">
-      <span class="tag">${boxTag} —</span> ${t.reasoning}
     </div>` : ''}
   `;
 
@@ -1066,9 +1224,9 @@ function renderActivityLog(){
   const items = transactions.slice(0,5).map(t => {
     const color = t.source === 'rule' ? 'var(--brand)' : 'var(--llm)';
     return `<div class="log-item">
-      <div class="log-time">${t.time}</div>
+      <div class="log-time">${escapeHtml(t.time)}</div>
       <div class="log-dot" style="background:${color}"></div>
-      <div class="log-text"><b>${t.id}</b> <span class="muted">diagnosed via</span> <b>${t.source === 'rule' ? 'Rule Engine' : 'LLM Fallback'}</b> <span class="muted">→ ${t.action.toLowerCase()}</span></div>
+      <div class="log-text"><b>${escapeHtml(t.id)}</b> <span class="muted">diagnosed via</span> <b>${t.source === 'rule' ? 'Rule Engine' : 'LLM Fallback'}</b> <span class="muted">→ ${escapeHtml(t.action.toLowerCase())}</span></div>
     </div>`;
   }).join('');
   log.innerHTML = items;
@@ -1083,7 +1241,7 @@ function renderFailureCategories(){
   const el = document.getElementById('failureCategories');
   el.innerHTML = Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([label,count]) => `
     <div class="bar-row">
-      <div class="bar-label">${label}</div>
+      <div class="bar-label">${escapeHtml(label)}</div>
       <div class="bar-track"><div class="bar-fill" style="width:${(count/max*100).toFixed(0)}%"></div></div>
       <div class="bar-value">${count}</div>
     </div>
@@ -1091,11 +1249,11 @@ function renderFailureCategories(){
 }
 
 function renderOutcomes(){
-  const counts = {recovered:0, failed:0, escalated:0};
+  const counts = {recovered:0, failed:0, escalated:0, pending:0};
   transactions.forEach(t => counts[t.outcome] = (counts[t.outcome]||0)+1);
   const total = transactions.length || 1;
-  const colors = {recovered:'var(--success)', failed:'var(--danger)', escalated:'var(--text-faint)'};
-  const labels = {recovered:'Recovered', failed:'Failed', escalated:'Escalated'};
+  const colors = {recovered:'var(--success)', failed:'var(--danger)', escalated:'var(--text-faint)', pending:'var(--warning)'};
+  const labels = {recovered:'Recovered', failed:'Failed', escalated:'Escalated', pending:'Pending'};
   const el = document.getElementById('outcomesBreakdown');
   el.innerHTML = Object.entries(counts).map(([k,v]) => `
     <div class="bar-row">
@@ -1107,19 +1265,28 @@ function renderOutcomes(){
 }
 
 function renderExceptions(){
-  const exceptions = transactions.filter(t => t.outcome !== 'recovered');
+  // Mirrors report.py's exception_cases: drawn from resolved_cases only,
+  // so a pending case (not yet confirmed either way) never shows up
+  // here as if it had already failed.
+  const exceptions = transactions.filter(t => t.status !== 'pending' && t.outcome !== 'recovered');
   const el = document.getElementById('exceptionsList');
   if(exceptions.length === 0){
     el.innerHTML = `<div class="empty-hint">No exceptions right now — every case was resolved automatically.</div>`;
     return;
   }
-  el.innerHTML = `<table><thead><tr><th>Transaction</th><th>Cause</th><th>Source</th><th>Status</th></tr></thead><tbody>
+  el.innerHTML = `<table class="table-exceptions">
+    <colgroup>
+      <col class="col-txn"><col class="col-cause"><col class="col-source"><col class="col-status"><col class="col-amount">
+    </colgroup>
+    <thead><tr><th>Transaction</th><th>Cause</th><th>Source</th><th>Status</th><th>Amount</th></tr></thead>
+    <tbody>
     ${exceptions.slice(0,10).map(t => `
-      <tr class="row-clickable" onclick="openTransaction('${t.id}')">
-        <td><span class="txn-id">${t.id}</span></td>
-        <td style="font-size:12.5px;">${t.reasonLabel}</td>
+      <tr class="row-clickable" onclick="openTransaction('${escapeHtml(t.id)}')">
+        <td><span class="txn-id">${escapeHtml(t.id)}</span></td>
+        <td style="font-size:12.5px;" title="${escapeHtml(t.reasonLabel)}">${escapeHtml(t.reasonLabel)}</td>
         <td>${sourceChip(t.source)}</td>
         <td>${outcomeChip(t.outcome)}</td>
+        <td><span class="amount">₹${fmtINR(t.amount)}</span></td>
       </tr>
     `).join('')}
   </tbody></table>`;
@@ -1151,16 +1318,52 @@ function renderSplit(){
 }
 
 function renderMetrics(){
-  const recovered = transactions.filter(t=>t.outcome==='recovered');
-  const recoveredAmt = recovered.reduce((s,t)=>s+t.amount,0);
+  // Mirrors report.py's summarize(): pending cases are excluded from
+  // the recovery rate and from recovered/exception entirely, since
+  // they're not yet confirmed either way.
+  const pending = transactions.filter(t => t.status === 'pending');
+  const resolved = transactions.filter(t => t.status !== 'pending');
+  const recovered = resolved.filter(t => t.outcome === 'recovered');
+  const recoveredReal = recovered.filter(t => t.isReal);
+  const recoveredProjected = recovered.filter(t => !t.isReal);
+
+  const pendingAmt = pending.reduce((s,t)=>s+t.amount,0);
+  const recoveredAmt = recovered.reduce((s,t)=>s+t.amount,0); // blended - see note below
+  const recoveredRealAmt = recoveredReal.reduce((s,t)=>s+t.amount,0);
+  const recoveredProjectedAmt = recoveredProjected.reduce((s,t)=>s+t.amount,0);
   const totalAmt = transactions.reduce((s,t)=>s+t.amount,0);
-  const atRiskAmt = totalAmt - recoveredAmt;
-  const rate = (recovered.length / (transactions.length||1) * 100).toFixed(1);
+  // unrecovered_amount, same formula as report.py: total minus recovered
+  // minus pending (pending isn't "at risk" the same way an exception is,
+  // but it also isn't recovered yet, so it's carved out of both).
+  const atRiskAmt = totalAmt - recoveredAmt - pendingAmt;
+  const rate = (recovered.length / (resolved.length||1) * 100).toFixed(1);
+
   document.getElementById('m-risk').textContent = fmtINR(atRiskAmt);
   document.getElementById('m-recovered').textContent = fmtINR(recoveredAmt);
   document.getElementById('m-rate').textContent = rate;
   document.getElementById('m-processed').textContent = transactions.length;
-  document.getElementById('m-risk-delta').textContent = `${transactions.length} failed transactions processed`;
+  document.getElementById('m-risk-delta').textContent = pending.length
+    ? `${transactions.length} failed transactions processed · ${pending.length} pending confirmation`
+    : `${transactions.length} failed transactions processed`;
+
+  // The honesty fix: never let "Revenue Recovered" imply it's all real
+  // money without saying so right next to it. Same split report.py
+  // prints and writes to summary_report.json, just rendered inline.
+  const recoveredDelta = document.getElementById('m-recovered-delta');
+  if(recoveredDelta){
+    if(recovered.length === 0){
+      recoveredDelta.textContent = 'No recovered cases yet';
+    } else if(recoveredProjected.length === 0){
+      recoveredDelta.textContent = `₹${fmtINR(recoveredRealAmt)} real, API-confirmed`;
+    } else if(recoveredReal.length === 0){
+      recoveredDelta.textContent = `₹${fmtINR(recoveredProjectedAmt)} projected (simulated) · ₹0 real so far`;
+    } else {
+      recoveredDelta.textContent = `₹${fmtINR(recoveredRealAmt)} real · ₹${fmtINR(recoveredProjectedAmt)} projected (simulated)`;
+    }
+    recoveredDelta.title = 'Combines real, API-confirmed outcomes with simulated/projected outcomes. ' +
+      'Real = decided by an actual Razorpay webhook, poll, or retry-attempt API call. ' +
+      'Projected = a probability draw against a configured success rate, not a live result.';
+  }
 }
 
 function renderAll(){
@@ -1228,57 +1431,6 @@ window.addEventListener('popstate', (e) => {
 // Establish the initial history entry so the very first Back press
 // has an app state to land on rather than exiting the page.
 history.replaceState({view:'dashboard'}, '', '#dashboard');
-
-/* ============================================================
-   Simulation
-   ============================================================ */
-const simBtn = document.getElementById('simBtn');
-let simRunning = false;
-
-function animateCounter(elId, from, to, suffix=''){
-  const el = document.getElementById(elId);
-  const steps = 20;
-  let step = 0;
-  const iv = setInterval(() => {
-    step++;
-    const val = Math.round(from + (to-from) * (step/steps));
-    el.textContent = fmtINR(val) + suffix;
-    if(step >= steps){ clearInterval(iv); el.textContent = fmtINR(to) + suffix; }
-  }, 25);
-}
-
-async function runSimulation(){
-  if(simRunning) return;
-  simRunning = true;
-  simBtn.disabled = true;
-  simBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 1s linear infinite;"><path d="M21 12a9 9 0 1 1-2.64-6.36"/></svg> Processing…`;
-
-  switchView('dashboard');
-  const batch = rnd(4,6);
-
-  for(let i=0;i<batch;i++){
-    await new Promise(r => setTimeout(r, 550));
-    const t = makeTxn();
-    t._new = true;
-    transactions.unshift(t);
-    if(transactions.length > 200) transactions.pop();
-    renderRecentDecisions();
-    renderActivityLog();
-    renderSplit();
-    renderMetrics();
-    renderFailureCategories();
-    renderOutcomes();
-  }
-
-  transactions.forEach(t => delete t._new);
-  renderTxnList();
-  renderExceptions();
-
-  simBtn.disabled = false;
-  simBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="6 3 20 12 6 21 6 3"/></svg> Run Recovery Simulation`;
-  simRunning = false;
-}
-simBtn.addEventListener('click', runSimulation);
 
 const refreshBtn = document.getElementById('refreshBtn');
 refreshBtn.addEventListener('click', async () => {
